@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snowberry Games</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">Snowberry Games</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#games">Games</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="ice-crystal"></div>
+        <div class="ice-crystal"></div>
+        <div class="ice-crystal"></div>
+        <div class="hero-content">
+            <img src="assets/studio/logo_transparent.png" alt="Snowberry Games Logo" class="hero-logo">
+            <p>We are an indie game studio dedicated to bringing people closer together through meaningful gaming
+                experiences. Founded in January 2025 by two friends, our studio is based in Antwerp, Belgium.
+            </p>
+            <a href="#games" class="cta-button">Explore Our Games</a>
+        </div>
+    </section>
+
+    <!-- About Section --
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">Our Winter Story</h2>
+            <div class="about-grid">
+                <div class="about-card">
+                    <span class="card-icon">🎮</span>
+                    <h3 class="card-title">Crystalline Development</h3>
+                    <p>We create compelling and high-quality games with winter aesthetics and cool mechanics, focusing on innovative gameplay that sparkles like fresh snow.</p>
+                </div>
+                <div class="about-card">
+                    <span class="card-icon">❄️</span>
+                    <h3 class="card-title">Frozen Creativity</h3>
+                    <p>Our team combines decades of experience with the serene beauty of winter, delivering games that are both technically excellent and emotionally warming.</p>
+                </div>
+                <div class="about-card">
+                    <span class="card-icon">✨</span>
+                    <h3 class="card-title">Pure as Snow</h3>
+                    <p>Every project receives meticulous attention to detail, ensuring polished experiences that glisten like morning frost and create lasting memories.</p>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Games Section -->
+    <section class="games" id="games">
+        <div class="container">
+            <h2 class="section-title">Our Games</h2>
+            <div class="games-grid">
+                <!-- Example of a game card  --
+                <div class="game-card" data-game="frostpeak">
+                    <div class="game-image">🏔️</div>
+                    <div class="game-content">
+                        <h3 class="game-title">Frostpeak Chronicles</h3>
+                        <p>An epic adventure through mystical snow-covered mountains with crystalline visuals and innovative ice-based puzzle mechanics.</p>
+                        <button class="game-details-btn">View Details</button>
+                    </div>
+                </div>
+                <div class="game-card" data-game="blizzard">
+                    <div class="game-image">⚡</div>
+                    <div class="game-content">
+                        <h3 class="game-title">Blizzard Rush</h3>
+                        <p>High-energy arctic action that tests your reflexes in fast-paced, ever-changing winter storms and icy environments.</p>
+                        <button class="game-details-btn">View Details</button>
+                    </div>
+                </div>
+                <div class="game-card" data-game="frozen">
+                    <div class="game-image">🔮</div>
+                    <div class="game-content">
+                        <h3 class="game-title">Frozen Realms</h3>
+                        <p>Explore magical winter wonderlands filled with mystery and challenging ice puzzles that blend RPG elements with unique seasonal gameplay.</p>
+                        <button class="game-details-btn">View Details</button>
+                    </div>
+                </div>
+            -->
+                <!-- Example of a simple game card without details -->
+                <div class="game-card simple-card">
+                    <div class="game-image" style="background-image: url('assets/firelight/header.jpg');"></div>
+                    <div class="game-content">
+                        <h3 class="game-title">The Firelight</h3>
+                        <p>A 2-player horror adventure set in Medieval Europe on Firefly Island. Currently in
+                            prototyping phase.</p>
+                        <div class="coming-soon-badge">Coming 2026</div>
+                    </div>
+                </div>
+                <div class="game-card simple-card">
+                    <div class="game-image" style="background-image: url('assets/bagels/header.png');"></div>
+                    <div class="game-content">
+                        <h3 class="game-title">The Firelight</h3>
+                        <p>A 2-player horror adventure set in Medieval Europe on Firefly Island. Currently in
+                            prototyping phase.</p>
+                        <div class="simple-links">
+                            <a href="https://store.steampowered.com" target="_blank" class="simple-link steam">
+                                Steam
+                            </a>
+                            <a href="https://itch.io" target="_blank" class="simple-link itch">
+                                Itch.io
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Game Detail Modals -->
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="game-modal" id="game-modal">
+            <button class="modal-close" id="modal-close">&times;</button>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="modal-title">Game Title</h2>
+                    <div class="game-links" id="game-links">
+                        <!-- Platform links will be inserted here -->
+                    </div>
+                </div>
+
+                <div class="modal-body">
+                    <div class="media-section">
+                        <div class="media-carousel" id="media-carousel">
+                            <div class="carousel-container">
+                                <div class="carousel-track" id="carousel-track">
+                                    <!-- Media items will be inserted here -->
+                                </div>
+                                <button class="carousel-btn prev-btn" id="prev-btn">‹</button>
+                                <button class="carousel-btn next-btn" id="next-btn">›</button>
+                            </div>
+                            <div class="carousel-indicators" id="carousel-indicators">
+                                <!-- Indicators will be inserted here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="game-info">
+                        <div class="game-description" id="game-description">
+                            <!-- Game description will be inserted here -->
+                        </div>
+
+                        <div class="game-features" id="game-features">
+                            <!-- Game features will be inserted here -->
+                        </div>
+
+                        <div class="game-specs" id="game-specs">
+                            <!-- Game specifications will be inserted here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Break the Ice</h2>
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="cta-button">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Snowberry Games.</p>
+        </div>
+    </footer>
+
+    <script src="js/game-data.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
