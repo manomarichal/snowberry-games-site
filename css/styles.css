@@ -287,8 +287,7 @@ nav.scrolled {
 
 .about-image img {
     width: 100%;
-    max-width: 500px;
-    border-radius: 10px;
+    max-width: 460px;
     object-fit: cover;
 }
 
@@ -845,7 +844,7 @@ nav.scrolled {
 
 /* Contact Section */
 .contact {
-    padding: 5rem 0;
+    padding: 3rem 0;
     background: #0f1419;
     position: relative;
 }
@@ -866,6 +865,21 @@ nav.scrolled {
     margin: 0 auto;
     position: relative;
     z-index: 2;
+}
+
+.contact p {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: #64b5f6;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.contact a {
+    color: inherit;
 }
 
 .form-group {

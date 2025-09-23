@@ -175,7 +175,7 @@ document.querySelector('.contact-form').addEventListener('submit', function(e) {
     
     // Simple validation
     if (name && email && message) {
-        alert('Thank you for your message! We\'ll get back to you soon. ❄️');
+        alert('Thank you for your message! We\'ll get back to you soon.');
         this.reset();
     } else {
         alert('Please fill in all fields.');
