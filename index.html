@@ -70,10 +70,10 @@ nav {
 
 /* ── HERO ── */
 .hero {
-  padding: 5.5rem 2.5rem 4rem;
+  padding: 8rem 2.5rem 4rem;
 }
 .hero-inner {
-  max-width: 860px; margin: 0 auto;
+  max-width: 1060px; margin: 0 auto;
   display: grid; grid-template-columns: auto 1fr auto;
   gap: 2.5rem; align-items: center;
   text-align: left;
@@ -81,23 +81,23 @@ nav {
 
 /* logo column */
 .hero-logo-wrap { display: flex; align-items: center; }
-.hero-logo { width: 140px; display: block; }
+.hero-logo { width: 250px; display: block; }
 
 /* center text */
 .hero-text { border-left: 1px solid var(--border); padding-left: 2.5rem; }
 .hero-studio {
   font-family: 'Cinzel', serif;
-  font-size: .7rem; letter-spacing: .2em; text-transform: uppercase;
+  font-size: 1rem; letter-spacing: .2em; text-transform: uppercase;
   color: var(--blue-bright); margin-bottom: .5rem; opacity: .8;
 }
 .hero-tagline {
-  font-size: 1.05rem; color: var(--text-main);
+  font-size: 1.2rem; color: var(--text-main);
   line-height: 1.65; margin-bottom: 1.1rem;
 }
 .hero-tagline em { color: var(--blue-light); font-style: normal; font-weight: 500; }
 .hero-team { display: flex; flex-direction: column; gap: .25rem; }
 .team-member {
-  font-size: .8rem; color: var(--text-muted);
+  font-size: 1rem; color: var(--text-muted);
   display: flex; align-items: center; gap: .5rem;
 }
 .team-dot {
@@ -109,7 +109,7 @@ nav {
 /* photo column */
 .hero-photo-wrap { display: flex; align-items: center; }
 .hero-photo {
-  width: 200px; aspect-ratio: 4/3; object-fit: cover;
+  width: 250px; aspect-ratio: 4/3; object-fit: cover;
   border-radius: 10px;
   border: 1px solid var(--border);
   display: block;
@@ -131,7 +131,7 @@ nav {
 }
 .section-title {
   font-family: 'Cinzel', serif;
-  font-size: 1.4rem; font-weight: 600;
+  font-size: 2rem; font-weight: 600;
   color: var(--blue-bright);
   letter-spacing: .04em;
 }
@@ -141,19 +141,23 @@ nav {
   text-transform: uppercase; letter-spacing: .1em;
 }
 .projects-grid {
-  justify-items: center;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 1.5rem;
+  padding-bottom: 1rem; /* space for scrollbar */
+  scrollbar-color: var(--blue-bright) transparent;
+  scrollbar-width: thin;
+}
+
+.project-card {
+  flex: 0 0 calc(33.333% - 1rem);
 }
 .jam-grid {
   justify-items: center;
 }
 
 /* ── PROJECT CARDS ── */
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1.5rem;
-  justify-content: center;
-}
 .project-card {
   background: var(--card-bg);
   border: 1px solid var(--border);
