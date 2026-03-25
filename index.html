@@ -1,186 +1,470 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Snowberry Games</title>
-    <link rel="stylesheet" href="css/styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Snowberry Games</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+
+/* ── RESET & BASE ── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+:root {
+  --blue-deep:   #0f1419;
+  --blue-navy:   #1a237e;
+  --blue-mid:    #1e3a8a;
+  --blue-bright: #64b5f6;
+  --blue-light:  #90caf9;
+  --blue-pale:   #bbdefb;
+  --text-main:   rgba(255,255,255,0.85);
+  --text-muted:  rgba(255,255,255,0.5);
+  --text-dim:    rgba(255,255,255,0.3);
+  --border:      rgba(100,181,246,0.15);
+  --border-hover:rgba(100,181,246,0.35);
+  --card-bg:     rgba(100,181,246,0.05);
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(160deg, #0f1419 0%, #0d1b4b 55%, #1e3a8a 100%);
+  background-attachment: fixed;
+  color: #fff;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; width: 100%; z-index: 1000;
+  background: rgba(15,20,25,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: .85rem 2.5rem;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo {
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem; font-weight: 600;
+  color: var(--blue-bright);
+  letter-spacing: .06em;
+}
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  color: var(--text-muted); font-size: .85rem; font-weight: 500;
+  letter-spacing: .04em; text-transform: uppercase;
+  transition: color .2s; position: relative;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -3px; left: 0;
+  width: 0; height: 1px;
+  background: var(--blue-bright);
+  transition: width .3s;
+}
+.nav-links a:hover { color: var(--blue-bright); }
+.nav-links a:hover::after { width: 100%; }
+
+/* ── HERO ── */
+.hero {
+  padding: 5.5rem 2.5rem 4rem;
+}
+.hero-inner {
+  max-width: 860px; margin: 0 auto;
+  display: grid; grid-template-columns: auto 1fr auto;
+  gap: 2.5rem; align-items: center;
+  text-align: left;
+}
+
+/* logo column */
+.hero-logo-wrap { display: flex; align-items: center; }
+.hero-logo { width: 140px; display: block; }
+
+/* center text */
+.hero-text { border-left: 1px solid var(--border); padding-left: 2.5rem; }
+.hero-studio {
+  font-family: 'Cinzel', serif;
+  font-size: .7rem; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--blue-bright); margin-bottom: .5rem; opacity: .8;
+}
+.hero-tagline {
+  font-size: 1.05rem; color: var(--text-main);
+  line-height: 1.65; margin-bottom: 1.1rem;
+}
+.hero-tagline em { color: var(--blue-light); font-style: normal; font-weight: 500; }
+.hero-team { display: flex; flex-direction: column; gap: .25rem; }
+.team-member {
+  font-size: .8rem; color: var(--text-muted);
+  display: flex; align-items: center; gap: .5rem;
+}
+.team-dot {
+  width: 4px; height: 4px; border-radius: 50%;
+  background: var(--blue-bright); opacity: .6; flex-shrink: 0;
+}
+.team-member strong { color: var(--blue-pale); font-weight: 500; }
+
+/* photo column */
+.hero-photo-wrap { display: flex; align-items: center; }
+.hero-photo {
+  width: 200px; aspect-ratio: 4/3; object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  display: block;
+}
+
+/* ── SECTIONS ── */
+.section {
+  padding: 4rem 2.5rem;
+}
+.container { max-width: 1060px; margin: 0 auto; }
+
+.project-card-body,
+.jam-card-body {
+  text-align: left;
+}
+.section-header {
+  display: flex; flex-direction: column; align-items: center; gap: .4rem;
+  margin-bottom: 2.5rem; text-align: center;
+}
+.section-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.4rem; font-weight: 600;
+  color: var(--blue-bright);
+  letter-spacing: .04em;
+}
+.section-rule { display: none; }
+.section-sub {
+  font-size: .78rem; color: var(--text-dim);
+  text-transform: uppercase; letter-spacing: .1em;
+}
+.projects-grid {
+  justify-items: center;
+}
+.jam-grid {
+  justify-items: center;
+}
+
+/* ── PROJECT CARDS ── */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  justify-content: center;
+}
+.project-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px; overflow: hidden;
+  display: flex; flex-direction: column;
+  transition: border-color .25s, box-shadow .25s;
+}
+.project-card:hover {
+  border-color: var(--border-hover);
+  box-shadow: 0 8px 30px rgba(100,181,246,0.1);
+}
+.project-card-img {
+  aspect-ratio: 3/4;
+  background: rgba(100,181,246,0.08);
+  overflow: hidden; flex-shrink: 0;
+}
+.project-card-img img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform .4s;
+}
+.project-card:hover .project-card-img img { transform: scale(1.03); }
+.project-card-body {
+  padding: 1.2rem 1.4rem 1.4rem;
+  display: flex; flex-direction: column; flex: 1; gap: .6rem;
+}
+.project-card-meta {
+  display: flex; align-items: center; justify-content: space-between;
+}
+.project-card-cat {
+  font-size: .65rem; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--blue-bright); font-weight: 500;
+}
+.badge-tba {
+  display: inline-block; padding: .25rem .75rem;
+  background: rgba(255,107,53,0.15);
+  border: 1px solid rgba(255,107,53,0.35);
+  color: #ff8c5a; border-radius: 20px;
+  font-size: .68rem; font-weight: 600; letter-spacing: .04em;
+}
+.project-card-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.2rem; font-weight: 600;
+  color: var(--blue-pale); line-height: 1.2;
+}
+.project-card-desc {
+  font-size: .86rem; color: var(--text-muted);
+  line-height: 1.65; flex: 1;
+}
+.project-highlights {
+  list-style: none; display: flex; flex-direction: column; gap: .3rem;
+  padding-top: .5rem; border-top: 1px solid var(--border);
+}
+.project-highlights li {
+  font-size: .78rem; color: var(--text-muted);
+  padding-left: .9rem; position: relative; line-height: 1.5;
+}
+.project-highlights li::before {
+  content: '–'; position: absolute; left: 0; color: var(--blue-bright); opacity: .6;
+}
+.link-row {
+  display: flex; gap: .5rem; flex-wrap: wrap;
+  padding-top: .6rem; border-top: 1px solid var(--border);
+}
+.plat-btn {
+  display: inline-flex; align-items: center; gap: .3rem;
+  font-size: .78rem; font-weight: bold; padding: .5rem 1rem;
+  border-radius: 20px; transition: all .3s; color: #fff;
+}
+.plat-btn.steam { background: linear-gradient(135deg, #1b2838, #2a475e); }
+.plat-btn.itch  { background: linear-gradient(135deg, #fa5c5c, #ff7979); }
+.plat-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 15px rgba(100,181,246,0.3); }
+
+/* ── JAM GAMES ── */
+.jam-intro {
+  font-size: .85rem; color: var(--text-muted); margin-bottom: 1.8rem;
+  text-align: center;
+}
+.jam-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  justify-content: center;
+}
+.jam-card {
+  display: block;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px; overflow: hidden;
+  transition: transform .2s, border-color .2s, box-shadow .2s;
+}
+.jam-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--border-hover);
+  box-shadow: 0 6px 18px rgba(100,181,246,0.15);
+}
+.jam-card-img { aspect-ratio: 63/50; background: rgba(100,181,246,0.08); overflow: hidden; }
+.jam-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.jam-placeholder {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem;
+}
+.jam-card-body { padding: .45rem .55rem .5rem; }
+.jam-card-title { font-size: .7rem; font-weight: 600; color: var(--blue-light); line-height: 1.3; }
+.jam-card-play  { font-size: .6rem; color: var(--text-dim); margin-top: .1rem; }
+
+/* ── CONTACT ── */
+.contact {
+  padding: 2.5rem 2.5rem;
+  text-align: center;
+}
+.contact p { font-size: .9rem; color: var(--text-muted); }
+.contact a { color: var(--blue-bright); }
+.contact a:hover { text-decoration: underline; }
+.contact-copy { font-size: .75rem; color: var(--text-dim); margin-top: .35rem; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 800px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 1.8rem; }
+  .hero-logo-wrap { justify-content: center; }
+  .hero-text { border-left: none; padding-left: 0; border-top: 1px solid var(--border); padding-top: 1.5rem; }
+  .hero-photo-wrap { justify-content: center; }
+  .hero-photo { width: 100%; max-width: 320px; aspect-ratio: 16/9; }
+  .nav-links { display: none; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .jam-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+</style>
 </head>
-
 <body>
-    <!-- Navigation -->
-    <nav id="navbar">
-        <div class="nav-container">
-            <a href="#" class="logo">Snowberry Games</a>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#games">Games</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="ice-crystal"></div>
-        <div class="ice-crystal"></div>
-        <div class="ice-crystal"></div>
-        <div class="hero-content">
-            <img src="assets/studio/logo_transparent.png" alt="Snowberry Games Logo" class="hero-logo">
-            <p>
-            </p>
-            <a href="#games" class="cta-button">Explore Our Games</a>
-        </div>
-    </section>
+<!-- NAV -->
+<nav>
+  <span class="nav-logo">Snowberry Games</span>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#projects">Games</a></li>
+    <li><a href="#jams">Jam Games</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
 
-    <section class="about" id="about">
-        <h2 class="section-title">Who are we?</h2>
-        <div class="container about-container">
-            <div class="about-image">
-                <img src="assets/studio/gameforce_selfie.jpg" alt="Our team working" />
-            </div>
-            <div class="about-text">
-                <p>We are two friends who founded <b>Snowberry
-                        Games</b> in January 2025 after starting to work on our first commercial title, <b>The
-                        Firelight</b>
-                    Inspired by Larian Studios and Hazelight, we aim to create co-op games that bring people closer
-                    together.</p>
-                <p><b>Mano Marichal</b> is lead designer and programmer. He studied
-                    Computer Science at Antwerp and Game Studies & Engineering in Austria, interned at Dirty Paws
-                    Studio and co-founded <b>Snowberry Games</b>.</p>
-                <p><b>Florian Heynen</b> is lead artist, narrative designer, and sound designer. With a
-                    lifelong passion for art and games, he studied Interactive Sound Production at DAE and worked at
-                    Demute and co-founded <b>Snowberry Games</b>.</p>
-            </div>
-        </div>
-    </section>
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-inner">
 
-
-    <!-- Games Section -->
-    <section class="games" id="games">
-        <div class="container">
-            <h2 class="section-title">Our Projects</h2>
-            <div class="games-grid">
-                <!-- Example of a game card  --
-                <div class="game-card" data-game="frostpeak">
-                    <div class="game-image">🏔️</div>
-                    <div class="game-content">
-                        <h3 class="game-title">Frostpeak Chronicles</h3>
-                        <p>An epic adventure through mystical snow-covered mountains with crystalline visuals and innovative ice-based puzzle mechanics.</p>
-                        <button class="game-details-btn">View Details</button>
-                    </div>
-                </div>
-            -->
-                <!-- Example of a simple game card without details -->
-                <div class="game-card simple-card">
-                    <div class="game-image" style="background-image: url('assets/firelight/header.jpg');"></div>
-                    <div class="game-content">
-                        <h3 class="game-title">The Firelight</h3>
-                        <p>A 2-player horror adventure set in Medieval Europe on Firefly Island. Currently in
-                            prototyping phase.</p>
-                        <div class="coming-soon-badge">Release date to be announced</div>
-                    </div>
-                </div>
-                <div class="game-card simple-card">
-                    <div class="game-image" style="background-image: url('assets/bagels/header.png');"></div>
-                    <div class="game-content">
-                        <h3 class="game-title">Bagels of War</h3>
-                        <p>A small tower defense game where players need to defend the kingdom of Bagelburg from
-                            invading sandwiches. Released April 2024</p>
-                        <div class="simple-links">
-                            <a href="https://store.steampowered.com" target="_blank" class="simple-link steam">
-                                Steam
-                            </a>
-                            <a href="https://shano19.itch.io/bagels-of-war" target="_blank" class="simple-link itch">
-                                Itch.io
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Game Detail Modals -->
-    <div class="modal-overlay" id="modal-overlay">
-        <div class="game-modal" id="game-modal">
-            <button class="modal-close" id="modal-close">&times;</button>
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h2 class="modal-title" id="modal-title">Game Title</h2>
-                    <div class="game-links" id="game-links">
-                        <!-- Platform links will be inserted here -->
-                    </div>
-                </div>
-
-                <div class="modal-body">
-                    <div class="media-section">
-                        <div class="media-carousel" id="media-carousel">
-                            <div class="carousel-container">
-                                <div class="carousel-track" id="carousel-track">
-                                    <!-- Media items will be inserted here -->
-                                </div>
-                                <button class="carousel-btn prev-btn" id="prev-btn">‹</button>
-                                <button class="carousel-btn next-btn" id="next-btn">›</button>
-                            </div>
-                            <div class="carousel-indicators" id="carousel-indicators">
-                                <!-- Indicators will be inserted here -->
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="game-info">
-                        <div class="game-description" id="game-description">
-                            <!-- Game description will be inserted here -->
-                        </div>
-
-                        <div class="game-features" id="game-features">
-                            <!-- Game features will be inserted here -->
-                        </div>
-
-                        <div class="game-specs" id="game-specs">
-                            <!-- Game specifications will be inserted here -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="hero-logo-wrap">
+      <img class="hero-logo" src="assets/studio/logo_transparent.png" alt="Snowberry Games">
     </div>
 
-    <!-- Contact Section --
-    <section class="contact" id="contact">
-        <div class="container">
-            <h2 class="section-title">Break the Ice</h2>
-            <form class="contact-form">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" rows="5" required></textarea>
-                </div>
-                <button type="submit" class="cta-button">Send Message</button>
-            </form>
+    <div class="hero-text">
+      <p class="hero-studio">Independent Game Studio · Belgium</p>
+      <p class="hero-tagline">
+        Hey! We're two friends making <em> small co-op games</em>.<br>
+      </p>
+      <div class="hero-team">
+        <div class="team-member">
+          <span class="team-dot"></span>
+          <strong>Mano Marichal</strong>&nbsp;— Designer &amp; Programmer
         </div>
-    </section>
-    -->
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <p>Contact us at <a href="mailto:mano@snowberrygames.com">mano@snowberrygames.be</a></p>
-            <p>&copy; 2025 Snowberry Games.</p>
+        <div class="team-member">
+          <span class="team-dot"></span>
+          <strong>Florian Heynen</strong>&nbsp;— Artist, Narrative &amp; Sound
         </div>
-    </section>
+      </div>
+    </div>
 
-    <script src="js/game-data.js"></script>
-    <script src="js/main.js"></script>
+    <div class="hero-photo-wrap">
+      <img class="hero-photo" src="assets/studio/gameforce_selfie.jpg" alt="Mano and Florian at Gameforce">
+    </div>
+
+  </div>
+
+</section>
+
+<!-- PROJECTS -->
+<section class="section" id="projects">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Our Projects</h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="projects-grid" id="projects-grid"></div>
+  </div>
+</section>
+
+<!-- JAM GAMES -->
+<section class="section" id="jams">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Jam Games</h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="jam-grid" id="jam-grid"></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <p>Get in touch — <a href="mailto:mano@snowberrygames.be">mano@snowberrygames.be</a></p>
+    <p class="contact-copy">&copy; 2025 Snowberry Games. All rights reserved.</p>
+  </div>
+</section>
+
+<script>
+const PROJECTS = [
+  {
+    id: 'the-firelight',
+    category: 'Current Project',
+    title: 'The Firelight',
+    image: 'assets/firelight/header.jpg',
+    desc: 'A 2-player horror adventure set in Medieval Europe on Firefly Island. Currently in prototyping phase.',
+    statusBadge: 'Steam page soon',
+    platformLinks: [],
+    highlights: [
+      'Asymmetric co-op — each player has unique tools and knowledge.',
+      'Procedurally flavoured events so no two sessions feel identical.',
+      'Original score and sound design by Florian Heynen.',
+      'Built in Godot 4.',
+    ],
+  },
+  {
+    id: 'bagels-of-war',
+    category: 'Released April 2024',
+    title: 'Bagels of War',
+    image: 'assets/bagels/header.png',
+    desc: 'A tower defense game where players defend the kingdom of Bagelburg from invading sandwiches. Nominated for the PGDA Talent Award 2024.',
+    platformLinks: [
+      { type: 'steam', label: 'Steam',   href: 'https://store.steampowered.com' },
+      { type: 'itch',  label: 'Itch.io', href: 'https://shano19.itch.io/bagels-of-war' },
+    ],
+    highlights: [
+      'Nominated — PGDA Talent Award 2024.',
+      '8 tower types, 12 enemy variants, 5 maps.',
+      'Designed and shipped in Godot / GDScript.',
+    ],
+  },
+  {
+    id: 'platformer-of-war',
+    category: 'On Hold',
+    title: 'Untitled Platformer',
+    image: 'assets/platformer/capsule.png',
+    desc: '2D metroidvania where you use your hammer to platform around the nightmare you were trapped in and find a way to escape.',
+    platformLinks: [
+      { type: 'itch',  label: 'Itch.io', href: 'https://slampants-games.itch.io/untitled-game' },
+    ],
+    highlights: [
+    ],
+  },
+];
+
+const JAM_GAMES = [
+  { title: 'Part of a Village',           image: 'assets/jams/village.png', href: 'https://shano19.itch.io/part-of-a-village' },
+  { title: 'Dungeon Daycare',           image: 'assets/jams/baby.png', href: 'https://shano19.itch.io/dungeon-daycare' },
+  { title: 'Nautilus',           image: 'assets/jams/nautilus.png', href: 'https://nairolf.itch.io/nautilus-into-the-abyss' },
+  { title: 'Neon Ascend',           image: 'assets/jams/neonascend.png', href: 'https://shano19.itch.io/neon-ascend' },
+  { title: 'Tornado Town',           image: 'assets/jams/tornado.png', href: 'https://quintenb.itch.io/turmoil-in-tornado-town' },
+  { title: 'Bertle Royale',     image: 'assets/jams/cards.png', href: 'https://prepe.itch.io/bertle-royale-the-card-game' },
+  { title: 'Snek.Game',         image: 'assets/jams/snek.png', href: 'https://shano19.itch.io/snek-game' },
+  { title: 'Why The Long Gun?', image: 'assets/jams/gun.png', href: 'https://twice-twice.itch.io/why-the-long-gun' },
+  { title: 'A Beesy Week',      image: 'assets/jams/bees.png', href: 'https://shano19.itch.io/a-beesy-week' },
+];
+
+const ICO = {
+  steam: `<svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M11.98 0A12 12 0 000 12a12 12 0 00.01.27L4.5 14.1a3.37 3.37 0 011.7-.46 3.4 3.4 0 01.37.02l2-2.88v-.04a5.1 5.1 0 115.1 5.1h-.12l-2.83 2.02v.05a3.4 3.4 0 01-3.4 3.13 3.4 3.4 0 01-3.22-2.32L.4 17.25A12 12 0 1011.98 0z"/></svg>`,
+  itch:  `<svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M3.13 1.06C2.08 1.7.04 4.09 0 4.5v1c0 1.26 1.18 2.36 2.25 2.36 1.29 0 2.38-1.07 2.38-2.36 0 1.29 1.06 2.36 2.35 2.36 1.3 0 2.33-1.07 2.33-2.36 0 1.29 1.08 2.36 2.37 2.36h.04c1.3 0 2.37-1.07 2.37-2.36 0 1.29 1.04 2.36 2.33 2.36 1.29 0 2.35-1.07 2.35-2.36 0 1.29 1.09 2.36 2.38 2.36C22.82 7.86 24 6.76 24 5.5v-1c-.04-.41-2.08-2.8-3.13-3.44C18.64.37 5.42.35 3.13 1.06z"/></svg>`,
+};
+
+function renderProjects() {
+  document.getElementById('projects-grid').innerHTML = PROJECTS.map(p => {
+    const img = p.image ? `<img src="${p.image}" alt="${p.title}">` : '';
+    const foot = p.statusBadge
+      ? `<span class="badge-tba">${p.statusBadge}</span>`
+      : `<div class="link-row">${(p.platformLinks || []).map(l =>
+          `<a href="${l.href}" target="_blank" rel="noopener" class="plat-btn ${l.type}">${ICO[l.type] || ''}${l.label}</a>`
+        ).join('')}</div>`;
+    const bullets = '';
+    return `<article class="project-card">
+      <div class="project-card-img">${img}</div>
+      <div class="project-card-body">
+        <div class="project-card-meta">
+          <span class="project-card-cat">${p.category}</span>
+        </div>
+        <h3 class="project-card-title">${p.title}</h3>
+        <p class="project-card-desc">${p.desc}</p>
+        ${bullets}
+        <div>${foot}</div>
+      </div>
+    </article>`;
+  }).join('');
+}
+
+function renderJams() {
+  document.getElementById('jam-grid').innerHTML = JAM_GAMES.map(g => {
+    const img = g.image
+      ? `<img src="${g.image}" alt="${g.title}">`
+      : `<div class="jam-placeholder">🎮</div>`;
+    return `<a class="jam-card" href="${g.href}" target="_blank" rel="noopener">
+      <div class="jam-card-img">${img}</div>
+      <div class="jam-card-body">
+        <div class="jam-card-title">${g.title}</div>
+        <div class="jam-card-play">Play on itch.io ↗</div>
+      </div>
+    </a>`;
+  }).join('');
+}
+
+renderProjects();
+renderJams();
+</script>
 </body>
-
 </html>
