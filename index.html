@@ -8,29 +8,74 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 
+/* ═══════════════════════════════════════════════════════════
+   🎨  THEME — edit everything here, nowhere else
+   ═══════════════════════════════════════════════════════════ */
+:root {
+  /* BACKGROUND IMAGE — set path here; falls back to --theme-bg-from colour if image missing */
+  --theme-bg-image:     url('assets/studio/background.jpg');
+
+  /* BACKGROUND FALLBACK COLOUR (shown before image loads, or if it fails) */
+  --theme-bg-from:      #0f1419;
+  --theme-bg-mid:       #0d1b4b;
+  --theme-bg-to:        #1e3a8a;
+
+  /* ACCENT — drives links, highlights, bright text */
+  --theme-accent:       #4BA66A;
+  --theme-accent-light: #D96299;
+  --theme-accent-pale:  #F299B9;
+
+  /* NAV background */
+  --theme-nav-bg:       rgba(15,20,25,0.92);
+
+  /* CARD surface & borders */
+  --theme-card-bg:      rgba(100,181,246,0.05);
+  --theme-border:       rgba(100,181,246,0.15);
+  --theme-border-hover: rgba(100,181,246,0.35);
+
+  /* TEXT */
+  --theme-text-main:    rgba(255,255,255,0.85);
+  --theme-text-muted:   rgba(255,255,255,0.50);
+  --theme-text-dim:     rgba(255,255,255,0.30);
+
+  /* BADGE (e.g. "Steam page soon") */
+  --theme-badge-bg:     rgba(0, 116, 14, 0.15);
+  --theme-badge-border: rgba(53, 255, 90, 0.35);
+  --theme-badge-text:   #4BA66A;
+
+  /* BUTTONS */
+  --theme-btn-steam-from: #1b2838;
+  --theme-btn-steam-to:   #2a475e;
+  --theme-btn-itch-from:  #fa5c5c;
+  --theme-btn-itch-to:    #ff7979;
+  --theme-btn-hover-glow: rgba(100,181,246,0.30);
+}
+/* ═══════════════════════════════════════════════════════════
+   END OF THEME — do not edit below this line
+   ═══════════════════════════════════════════════════════════ */
+
 /* ── RESET & BASE ── */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
 :root {
-  --blue-deep:   #0f1419;
-  --blue-navy:   #1a237e;
-  --blue-mid:    #1e3a8a;
-  --blue-bright: #64b5f6;
-  --blue-light:  #90caf9;
-  --blue-pale:   #bbdefb;
-  --text-main:   rgba(255,255,255,0.85);
-  --text-muted:  rgba(255,255,255,0.5);
-  --text-dim:    rgba(255,255,255,0.3);
-  --border:      rgba(100,181,246,0.15);
-  --border-hover:rgba(100,181,246,0.35);
-  --card-bg:     rgba(100,181,246,0.05);
+  --blue-deep:    var(--theme-bg-from);
+  --blue-navy:    #1a237e;
+  --blue-mid:     var(--theme-bg-mid);
+  --blue-bright:  var(--theme-accent);
+  --blue-light:   var(--theme-accent-light);
+  --blue-pale:    var(--theme-accent-pale);
+  --text-main:    var(--theme-text-main);
+  --text-muted:   var(--theme-text-muted);
+  --text-dim:     var(--theme-text-dim);
+  --border:       var(--theme-border);
+  --border-hover: var(--theme-border-hover);
+  --card-bg:      var(--theme-card-bg);
 }
 
 body {
   font-family: 'Inter', sans-serif;
-  background: linear-gradient(160deg, #0f1419 0%, #0d1b4b 55%, #1e3a8a 100%);
-  background-attachment: fixed;
+  background: var(--theme-bg-from) url('assets/background.png') center center / cover no-repeat fixed;
   color: #fff;
   overflow-x: hidden;
   line-height: 1.6;
@@ -41,7 +86,7 @@ a { color: inherit; text-decoration: none; }
 /* ── NAV ── */
 nav {
   position: fixed; top: 0; width: 100%; z-index: 1000;
-  background: rgba(15,20,25,0.92);
+  background: var(--theme-nav-bg);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
   padding: .85rem 2.5rem;
@@ -69,21 +114,16 @@ nav {
 .nav-links a:hover::after { width: 100%; }
 
 /* ── HERO ── */
-.hero {
-  padding: 8rem 2.5rem 4rem;
-}
+.hero { padding: 8rem 2.5rem 4rem; }
 .hero-inner {
   max-width: 1060px; margin: 0 auto;
   display: grid; grid-template-columns: auto 1fr auto;
   gap: 2.5rem; align-items: center;
   text-align: left;
 }
-
-/* logo column */
 .hero-logo-wrap { display: flex; align-items: center; }
 .hero-logo { width: 250px; display: block; }
 
-/* center text */
 .hero-text { border-left: 1px solid var(--border); padding-left: 2.5rem; }
 .hero-studio {
   font-family: 'Cinzel', serif;
@@ -106,7 +146,6 @@ nav {
 }
 .team-member strong { color: var(--blue-pale); font-weight: 500; }
 
-/* photo column */
 .hero-photo-wrap { display: flex; align-items: center; }
 .hero-photo {
   width: 250px; aspect-ratio: 4/3; object-fit: cover;
@@ -116,15 +155,10 @@ nav {
 }
 
 /* ── SECTIONS ── */
-.section {
-  padding: 4rem 2.5rem;
-}
+.section { padding: 4rem 2.5rem; }
 .container { max-width: 1060px; margin: 0 auto; }
 
-.project-card-body,
-.jam-card-body {
-  text-align: left;
-}
+.project-card-body, .jam-card-body { text-align: left; }
 .section-header {
   display: flex; flex-direction: column; align-items: center; gap: .4rem;
   margin-bottom: 2.5rem; text-align: center;
@@ -136,26 +170,15 @@ nav {
   letter-spacing: .04em;
 }
 .section-rule { display: none; }
-.section-sub {
-  font-size: .78rem; color: var(--text-dim);
-  text-transform: uppercase; letter-spacing: .1em;
-}
+.section-sub { font-size: .78rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: .1em; }
+
 .projects-grid {
-  display: flex;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  gap: 1.5rem;
-  padding-bottom: 1rem; /* space for scrollbar */
+  display: flex; flex-wrap: nowrap; overflow-x: auto;
+  gap: 1.5rem; padding-bottom: 1rem;
   scrollbar-color: var(--blue-bright) transparent;
   scrollbar-width: thin;
 }
-
-.project-card {
-  flex: 0 0 calc(33.333% - 1rem);
-}
-.jam-grid {
-  justify-items: center;
-}
+.project-card { flex: 0 0 calc(33.333% - 1rem); }
 
 /* ── PROJECT CARDS ── */
 .project-card {
@@ -192,9 +215,10 @@ nav {
 }
 .badge-tba {
   display: inline-block; padding: .25rem .75rem;
-  background: rgba(255,107,53,0.15);
-  border: 1px solid rgba(255,107,53,0.35);
-  color: #ff8c5a; border-radius: 20px;
+  background: var(--theme-badge-bg);
+  border: 1px solid var(--theme-badge-border);
+  color: var(--theme-badge-text);
+  border-radius: 20px;
   font-size: .68rem; font-weight: 600; letter-spacing: .04em;
 }
 .project-card-title {
@@ -226,20 +250,23 @@ nav {
   font-size: .78rem; font-weight: bold; padding: .5rem 1rem;
   border-radius: 20px; transition: all .3s; color: #fff;
 }
-.plat-btn.steam { background: linear-gradient(135deg, #1b2838, #2a475e); }
-.plat-btn.itch  { background: linear-gradient(135deg, #fa5c5c, #ff7979); }
-.plat-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 15px rgba(100,181,246,0.3); }
+.plat-btn.steam {
+  background: linear-gradient(135deg, var(--theme-btn-steam-from), var(--theme-btn-steam-to));
+}
+.plat-btn.itch {
+  background: linear-gradient(135deg, var(--theme-btn-itch-from), var(--theme-btn-itch-to));
+}
+.plat-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px var(--theme-btn-hover-glow);
+}
 
 /* ── JAM GAMES ── */
-.jam-intro {
-  font-size: .85rem; color: var(--text-muted); margin-bottom: 1.8rem;
-  text-align: center;
-}
+.jam-intro { font-size: .85rem; color: var(--text-muted); margin-bottom: 1.8rem; text-align: center; }
 .jam-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 10px;
-  justify-content: center;
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  gap: 10px; justify-content: center;
+  justify-items: center;
 }
 .jam-card {
   display: block;
@@ -265,10 +292,7 @@ nav {
 .jam-card-play  { font-size: .6rem; color: var(--text-dim); margin-top: .1rem; }
 
 /* ── CONTACT ── */
-.contact {
-  padding: 2.5rem 2.5rem;
-  text-align: center;
-}
+.contact { padding: 2.5rem 2.5rem; text-align: center; }
 .contact p { font-size: .9rem; color: var(--text-muted); }
 .contact a { color: var(--blue-bright); }
 .contact a:hover { text-decoration: underline; }
@@ -285,7 +309,6 @@ nav {
   .projects-grid { grid-template-columns: 1fr; }
   .jam-grid { grid-template-columns: repeat(3, 1fr); }
 }
-
 
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -306,16 +329,12 @@ nav {
 <!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-inner">
-
     <div class="hero-logo-wrap">
       <img class="hero-logo" src="assets/studio/logo_transparent.png" alt="Snowberry Games">
     </div>
-
     <div class="hero-text">
       <p class="hero-studio">Independent Game Studio · Belgium</p>
-      <p class="hero-tagline">
-        Hey! We're two friends making <em> small co-op games</em>.<br>
-      </p>
+      <p class="hero-tagline">Hey! We're two friends making <em>small co-op games</em>.<br></p>
       <div class="hero-team">
         <div class="team-member">
           <span class="team-dot"></span>
@@ -327,13 +346,10 @@ nav {
         </div>
       </div>
     </div>
-
     <div class="hero-photo-wrap">
       <img class="hero-photo" src="assets/studio/gameforce_selfie.jpg" alt="Mano and Florian at Gameforce">
     </div>
-
   </div>
-
 </section>
 
 <!-- PROJECTS -->
@@ -373,7 +389,7 @@ const PROJECTS = [
     category: 'Current Project',
     title: 'The Firelight',
     image: 'assets/firelight/header.jpg',
-    desc: ' Our first commercial project, a 2-player horror-lite adventure set in Medieval Europe on Firefly Island. Currently working on our vertical slice.',
+    desc: 'Our first commercial project, a 2-player horror-lite adventure set in Medieval Europe on Firefly Island. Currently working on our vertical slice.',
     statusBadge: 'Steam page soon',
     platformLinks: [],
     highlights: [
@@ -390,7 +406,7 @@ const PROJECTS = [
     image: 'assets/bagels/header.png',
     desc: 'A tower defense game where players defend the kingdom of Bagelburg from invading sandwiches. Nominated for the PGDA Talent Award 2024.',
     platformLinks: [
-      { type: 'itch',  label: 'Itch.io', href: 'https://shano19.itch.io/bagels-of-war' },
+      { type: 'itch', label: 'Itch.io', href: 'https://shano19.itch.io/bagels-of-war' },
     ],
     highlights: [
       'Nominated — PGDA Talent Award 2024.',
@@ -405,23 +421,22 @@ const PROJECTS = [
     image: 'assets/platformer/capsule.png',
     desc: '2D metroidvania where you use your hammer to platform around the nightmare you were trapped in and find a way to escape.',
     platformLinks: [
-      { type: 'itch',  label: 'Itch.io', href: 'https://slampants-games.itch.io/untitled-game' },
+      { type: 'itch', label: 'Itch.io', href: 'https://slampants-games.itch.io/untitled-game' },
     ],
-    highlights: [
-    ],
+    highlights: [],
   },
 ];
 
 const JAM_GAMES = [
-  { title: 'Part of a Village',           image: 'assets/jams/village.png', href: 'https://shano19.itch.io/part-of-a-village' },
-  { title: 'Dungeon Daycare',           image: 'assets/jams/baby.png', href: 'https://shano19.itch.io/dungeon-daycare' },
-  { title: 'Nautilus',           image: 'assets/jams/nautilus.png', href: 'https://nairolf.itch.io/nautilus-into-the-abyss' },
-  { title: 'Neon Ascend',           image: 'assets/jams/neonascend.png', href: 'https://shano19.itch.io/neon-ascend' },
-  { title: 'Tornado Town',           image: 'assets/jams/tornado.png', href: 'https://quintenb.itch.io/turmoil-in-tornado-town' },
-  { title: 'Bertle Royale',     image: 'assets/jams/cards.png', href: 'https://prepe.itch.io/bertle-royale-the-card-game' },
-  { title: 'Snek.Game',         image: 'assets/jams/snek.png', href: 'https://shano19.itch.io/snek-game' },
-  { title: 'Why The Long Gun?', image: 'assets/jams/gun.png', href: 'https://twice-twice.itch.io/why-the-long-gun' },
-  { title: 'A Beesy Week',      image: 'assets/jams/bees.png', href: 'https://shano19.itch.io/a-beesy-week' },
+  { title: 'Part of a Village',  image: 'assets/jams/village.png',    href: 'https://shano19.itch.io/part-of-a-village' },
+  { title: 'Dungeon Daycare',    image: 'assets/jams/baby.png',       href: 'https://shano19.itch.io/dungeon-daycare' },
+  { title: 'Nautilus',           image: 'assets/jams/nautilus.png',   href: 'https://nairolf.itch.io/nautilus-into-the-abyss' },
+  { title: 'Neon Ascend',        image: 'assets/jams/neonascend.png', href: 'https://shano19.itch.io/neon-ascend' },
+  { title: 'Tornado Town',       image: 'assets/jams/tornado.png',    href: 'https://quintenb.itch.io/turmoil-in-tornado-town' },
+  { title: 'Bertle Royale',      image: 'assets/jams/cards.png',      href: 'https://prepe.itch.io/bertle-royale-the-card-game' },
+  { title: 'Snek.Game',          image: 'assets/jams/snek.png',       href: 'https://shano19.itch.io/snek-game' },
+  { title: 'Why The Long Gun?',  image: 'assets/jams/gun.png',        href: 'https://twice-twice.itch.io/why-the-long-gun' },
+  { title: 'A Beesy Week',       image: 'assets/jams/bees.png',       href: 'https://shano19.itch.io/a-beesy-week' },
 ];
 
 const ICO = {
@@ -437,7 +452,6 @@ function renderProjects() {
       : `<div class="link-row">${(p.platformLinks || []).map(l =>
           `<a href="${l.href}" target="_blank" rel="noopener" class="plat-btn ${l.type}">${ICO[l.type] || ''}${l.label}</a>`
         ).join('')}</div>`;
-    const bullets = '';
     return `<article class="project-card">
       <div class="project-card-img">${img}</div>
       <div class="project-card-body">
@@ -446,7 +460,6 @@ function renderProjects() {
         </div>
         <h3 class="project-card-title">${p.title}</h3>
         <p class="project-card-desc">${p.desc}</p>
-        ${bullets}
         <div>${foot}</div>
       </div>
     </article>`;
