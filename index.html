@@ -76,14 +76,22 @@ nav {
 .hero { padding: 8rem 2.5rem 4rem; }
 .hero-inner {
   max-width: 1060px; margin: 0 auto;
-  display: grid; grid-template-columns: auto 1fr auto;
-  gap: 2.5rem; align-items: center;
-  text-align: left;
+  display: flex; flex-direction: column;
+  align-items: center;
+  gap: 2rem;
 }
-.hero-logo-wrap { display: flex; align-items: center; }
+.hero-logo-wrap { display: flex; justify-content: center; }
 .hero-logo { width: 250px; display: block; }
 
-.hero-text { border-left: 1px solid var(--theme-border); padding-left: 2.5rem; }
+.hero-bottom-row {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+}
+
+.hero-text { padding-left: 0; }
 .hero-studio {
   font-size: 1rem; letter-spacing: .2em; text-transform: uppercase;
   color: var(--theme-accent); margin-bottom: .5rem; opacity: .8;
@@ -104,7 +112,7 @@ nav {
 }
 .team-member strong { color: var(--theme-accent-pale); font-weight: 500; }
 
-.hero-photo-wrap { display: flex; align-items: center; }
+.hero-photo-wrap { display: flex; align-items: center; flex-shrink: 0; }
 .hero-photo {
   width: 250px; aspect-ratio: 4/3; object-fit: cover;
   border-radius: 10px;
@@ -122,10 +130,10 @@ nav {
   margin-bottom: 2.5rem; text-align: center;
 }
 .section-title {
-  font-family: 'Cinzel', serif;
   font-size: 2rem; font-weight: 600;
   color: var(--theme-accent-light);
   letter-spacing: .04em;
+  text-transform: uppercase;
 }
 .section-rule { display: none; }
 .section-sub { font-size: .78rem; color: var(--theme-text-dim); text-transform: uppercase; letter-spacing: .1em; }
@@ -258,10 +266,7 @@ nav {
 
 /* ── RESPONSIVE ── */
 @media (max-width: 800px) {
-  .hero-inner { grid-template-columns: 1fr; gap: 1.8rem; }
-  .hero-logo-wrap { justify-content: center; }
-  .hero-text { border-left: none; padding-left: 0; border-top: 1px solid var(--theme-border); padding-top: 1.5rem; }
-  .hero-photo-wrap { justify-content: center; }
+  .hero-bottom-row { flex-direction: column; align-items: center; }
   .hero-photo { width: 100%; max-width: 320px; aspect-ratio: 16/9; }
   .nav-links { display: none; }
   .projects-grid { grid-template-columns: 1fr; }
@@ -289,21 +294,23 @@ nav {
     <div class="hero-logo-wrap">
       <img class="hero-logo" src="assets/studio/logo_transparent.png" alt="Snowberry Games">
     </div>
-    <div class="hero-text">
-      <p class="hero-tagline">Hey! We're two friends making <em>two player co-op games</em> and other small projects.<br></p>
-      <div class="hero-team">
-        <div class="team-member">
-          <span class="team-dot"></span>
-          <strong>Mano Marichal</strong>&nbsp;— Designer &amp; Programmer
-        </div>
-        <div class="team-member">
-          <span class="team-dot"></span>
-          <strong>Florian Heynen</strong>&nbsp;— Artist, Narrative &amp; Sound
+    <div class="hero-bottom-row">
+      <div class="hero-text">
+        <p class="hero-tagline">Hey! We're two friends making <em>two player co-op games</em> and other small projects.<br></p>
+        <div class="hero-team">
+          <div class="team-member">
+            <span class="team-dot"></span>
+            <strong>Mano Marichal</strong>&nbsp;— Designer &amp; Programmer
+          </div>
+          <div class="team-member">
+            <span class="team-dot"></span>
+            <strong>Florian Heynen</strong>&nbsp;— Artist, Narrative &amp; Sound
+          </div>
         </div>
       </div>
-    </div>
-    <div class="hero-photo-wrap">
-      <img class="hero-photo" src="assets/studio/gameforce_selfie.jpg" alt="Mano and Florian at Gameforce">
+      <div class="hero-photo-wrap">
+        <img class="hero-photo" src="assets/studio/gameforce_selfie.jpg" alt="Mano and Florian at Gameforce">
+      </div>
     </div>
   </div>
 </section>
