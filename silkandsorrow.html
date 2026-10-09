@@ -113,6 +113,7 @@ nav {
 
 .btn-row { display: flex; gap: .5rem; flex-wrap: wrap; justify-content: center; }
 .btn-row.left { justify-content: flex-start; }
+.btn-row:empty { display: none; }
 .section-actions { margin-top: 1.5rem; }
 .extras-card { max-width: 680px; margin: 0 auto; text-align: center; }
 .extras-card .btn-row { justify-content: center; margin-top: 1.1rem; }
@@ -255,6 +256,7 @@ nav {
         </ul>
       </div>
     </div>
+    <div class="btn-row section-actions" id="info-actions"></div>
   </div>
 </section>
 
@@ -353,7 +355,8 @@ const DRIVE = {
   extras:  'https://drive.google.com/drive/folders/1yEepDIi5l4GvpcgRlmNKgdpaltR_Cv0s?usp=drive_link',
 };
 
-const TRAILER_FILE = ASSETS + 'silk&sorrow_trailer.mp4';
+const TRAILER_FILE   = ASSETS + 'silk&sorrow_trailer.mp4';
+const FACTSHEET_PDF  = ASSETS + 'silk&sorrow_factsheet.pdf';
 const SCREENSHOTS  = { name: ASSETS + 'silk&sorrow_ss',  ext: ['png', 'jpg'], max: 20 };
 const GIFS         = { name: ASSETS + 'silk&sorrow_gif', ext: ['gif'],        max: 20 };
 
@@ -369,7 +372,7 @@ const STORES = [
 
 const SOCIALS = [
   { label: 'Instagram', href: 'https://www.instagram.com/snowberry.games/', icon: 'fa-brands fa-instagram' },
-  { label: 'Twitter/X', href: 'https://https://x.com/shano19_/', icon: 'fa-brands fa-x' },
+  { label: 'Twitter/X', href: 'https://x.com/shano19_/', icon: 'fa-brands fa-x-twitter' },
 ];
 
 const PRESS_RELEASES = [];
@@ -522,8 +525,14 @@ function render() {
       ...l.map(src => ['logos/', src]),
     ];
     if (await exists(TRAILER_FILE)) files.push(['trailer/', TRAILER_FILE]);
+    if (await exists(FACTSHEET_PDF)) files.push(['', FACTSHEET_PDF]);
     return files;
   }, 'silk-and-sorrow-media.zip');
+
+  exists(FACTSHEET_PDF).then(found => {
+    if (!found && location.protocol !== 'file:') return;
+    fill('info-actions', `<a class="plat-btn drive" href="${attr(FACTSHEET_PDF)}" download>${icon('fa-solid fa-file-pdf')}Download factsheet (PDF)</a>`);
+  });
 
   const comingSoon = '<div class="video-empty">Trailer coming soon</div>';
   const player = fill('trailer-player', TRAILER_FILE ? `<video controls playsinline preload="metadata" src="${attr(TRAILER_FILE)}"></video>` : comingSoon);
