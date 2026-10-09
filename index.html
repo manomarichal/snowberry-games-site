@@ -292,19 +292,19 @@ nav {
 <section class="hero" id="home">
   <div class="hero-inner">
     <div class="hero-logo-wrap">
-      <img class="hero-logo" src="assets/studio/logo_transparent.png" alt="Snowberry Games">
+      <img class="hero-logo" src="assets/studio/banner.jpg" alt="Snowberry Games">
     </div>
     <div class="hero-bottom-row">
       <div class="hero-text">
-        <p class="hero-tagline">Hey! We're two friends making <em>two player co-op games</em> and other small projects.<br></p>
+        <p class="hero-tagline">Hey! We're two friends  making <em>two player co-op games</em> and other small projects.<br></p>
         <div class="hero-team">
           <div class="team-member">
             <span class="team-dot"></span>
-            <strong>shano19</strong>&nbsp;— Designer &amp; Programmer
+            <strong>shano19</strong>&nbsp;— Game Design &amp; Programming
           </div>
           <div class="team-member">
             <span class="team-dot"></span>
-            <strong>nairolf</strong>&nbsp;— Artist, Narrative &amp; Sound
+            <strong>nairolf</strong>&nbsp;— Art &amp; Sound
           </div>
         </div>
       </div>
@@ -354,7 +354,7 @@ const PROJECTS = [
     desc: 'Our debut title, Silk & Sorrow is a two player co-op horror adventure set in the Chrysalis, a forgotten world created from the trash humanity has discarded.',
     platformLinks: [
           { type: 'steam', label: 'Steam', href: 'https://store.steampowered.com/app/4668880/Silk__Sorrow/' },
-          { type: 'site', label: 'Press Kit', href: 'https://impress.games/press-kit/snowberry-games/silk--sorrow' },],
+          { type: 'site', label: 'Press Kit', href: 'silkandsorrow.html' },],
     highlights: [
       'Asymmetric co-op — each player has unique tools and knowledge.',
       'Procedurally flavoured events so no two sessions feel identical.',
@@ -384,9 +384,11 @@ function renderProjects() {
     const img = p.image ? `<img src="${p.image}" alt="${p.title}">` : '';
     const foot = p.statusBadge
       ? `<span class="badge-tba">${p.statusBadge}</span>`
-      : `<div class="link-row">${(p.platformLinks || []).map(l =>
-          `<a href="${l.href}" target="_blank" rel="noopener" class="plat-btn ${l.type}">${ICO[l.type] || ''}${l.label}</a>`
-        ).join('')}</div>`;
+      : `<div class="link-row">${(p.platformLinks || []).map(l => {
+          // External links open in a new tab; pages on our own site open in the same tab
+          const ext = /^https?:\/\//.test(l.href) ? ' target="_blank" rel="noopener"' : '';
+          return `<a href="${l.href}"${ext} class="plat-btn ${l.type}">${ICO[l.type] || ''}${l.label}</a>`;
+        }).join('')}</div>`;
     return `<article class="project-card">
       <div class="project-card-img">${img}</div>
       <div class="project-card-body">

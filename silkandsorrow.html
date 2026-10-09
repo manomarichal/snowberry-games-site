@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Silk &amp; Sorrow — Press Kit | Snowberry Games</title>
+<meta name="description" content="Press kit for Silk & Sorrow, a hand-drawn dark fantasy co-op adventure for two players by Snowberry Games.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root {
+  --theme-bg:             #0f1419;
+  --theme-accent:         #4BA66A;
+  --theme-accent-light:   #D96299;
+  --theme-accent-pale:    #F299B9;
+  --theme-nav-bg:         rgba(15,20,25,0.92);
+  --theme-card-bg:        rgba(100,181,246,0.05);
+  --theme-border:         rgba(100,181,246,0.15);
+  --theme-border-hover:   rgba(100,181,246,0.35);
+  --theme-text-main:      rgba(255,255,255,0.85);
+  --theme-text-dim:       rgba(255,255,255,0.30);
+  --theme-badge-bg:       rgba(0,116,14,0.15);
+  --theme-badge-border:   rgba(53,255,90,0.35);
+  --theme-badge-text:     #D96299;
+  --theme-btn-steam-from: #1b2838;
+  --theme-btn-steam-to:   #2a475e;
+  --theme-btn-hover-glow: rgba(100,181,246,0.30);
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--theme-bg) url('assets/background.png') center / cover no-repeat fixed;
+  color: #fff;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+a { color: inherit; text-decoration: none; }
+[hidden] { display: none !important; }
+section[id] { scroll-margin-top: 80px; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+nav {
+  position: fixed; top: 0; width: 100%; z-index: 1000;
+  background: var(--theme-nav-bg);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--theme-border);
+  padding: .85rem 2.5rem;
+  display: flex; justify-content: center;
+}
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  color: var(--theme-accent-light); font-size: 1.5rem; font-weight: 500;
+  letter-spacing: .04em; text-transform: uppercase;
+  transition: color .2s; position: relative;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -3px; left: 0;
+  width: 0; height: 1px; background: var(--theme-accent);
+  transition: width .3s;
+}
+.nav-links a:hover { color: var(--theme-accent); }
+.nav-links a:hover::after { width: 100%; }
+
+.hero { padding: 8rem 2.5rem 3rem; }
+.hero-inner {
+  max-width: 1060px; margin: 0 auto;
+  display: flex; flex-direction: column; align-items: center;
+  gap: 1.2rem; text-align: center;
+}
+.game-logo { width: 420px; max-width: 100%; display: block; }
+.game-title { font-family: 'Cinzel', serif; font-size: 2.8rem; font-weight: 700; color: var(--theme-accent); line-height: 1.15; }
+.hero-studio { font-size: 1rem; letter-spacing: .2em; text-transform: uppercase; color: var(--theme-accent); opacity: .8; }
+.hero-tagline { font-size: 1.2rem; color: var(--theme-text-main); line-height: 1.65; max-width: 680px; }
+
+.badge-row { display: flex; gap: .5rem; flex-wrap: wrap; justify-content: center; }
+.badge-tba {
+  padding: .25rem .75rem;
+  background: var(--theme-badge-bg);
+  border: 1px solid var(--theme-badge-border);
+  color: var(--theme-badge-text);
+  border-radius: 20px;
+  font-size: .68rem; font-weight: 600; letter-spacing: .04em;
+}
+
+.section { padding: 3.5rem 2.5rem; }
+.container { max-width: 1060px; margin: 0 auto; }
+.section-header { display: flex; flex-direction: column; align-items: center; gap: .4rem; margin-bottom: 2rem; text-align: center; }
+.section-title { font-size: 2rem; font-weight: 600; color: var(--theme-accent-light); letter-spacing: .04em; text-transform: uppercase; }
+.section-sub { font-size: .78rem; color: var(--theme-text-main); text-transform: uppercase; letter-spacing: .1em; }
+
+.card { background: var(--theme-card-bg); border: 1px solid var(--theme-border); border-radius: 12px; padding: 1.4rem; }
+.card h3 { font-family: 'Cinzel', serif; font-size: 1.15rem; font-weight: 600; color: var(--theme-accent); line-height: 1.2; margin-bottom: .6rem; }
+.card h3:not(:first-child) { margin-top: 1.6rem; }
+.card p { font-size: .92rem; color: var(--theme-text-main); }
+.card p + p { margin-top: .6rem; }
+.card-link { color: var(--theme-accent-light); }
+.card-link:hover { text-decoration: underline; }
+
+.info-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.7fr); gap: 1.5rem; align-items: start; }
+.facts dl { display: flex; flex-direction: column; gap: .9rem; }
+.facts dt { font-size: .65rem; letter-spacing: .14em; text-transform: uppercase; color: var(--theme-accent-pale); font-weight: 500; }
+.facts dd { font-size: .9rem; color: var(--theme-text-main); }
+.facts dd .badge-row { justify-content: flex-start; margin-top: .25rem; }
+.facts small { font-size: .8rem; }
+
+.features { list-style: none; display: flex; flex-direction: column; gap: .55rem; }
+.features li { font-size: .9rem; color: var(--theme-text-main); padding-left: .95rem; position: relative; line-height: 1.55; }
+.features li::before { content: '–'; position: absolute; left: 0; color: var(--theme-accent); opacity: .7; }
+.features strong { color: var(--theme-accent-pale); font-weight: 500; }
+.extras-card { max-width: 680px; margin: 0 auto; }
+.extras-card .features { margin: .8rem 0 1.2rem; }
+
+.btn-row { display: flex; gap: .5rem; flex-wrap: wrap; justify-content: center; }
+.btn-row.left { justify-content: flex-start; }
+.section-actions { margin-top: 1.5rem; }
+.plat-btn {
+  display: inline-flex; align-items: center; gap: .4rem;
+  font: bold .78rem/1.6 'Inter', sans-serif; padding: .5rem 1rem;
+  border-radius: 20px; border: 1px solid transparent;
+  color: #fff; cursor: pointer; transition: all .3s;
+}
+.plat-btn.steam { background: linear-gradient(135deg, var(--theme-btn-steam-from), var(--theme-btn-steam-to)); }
+.plat-btn.drive { background: linear-gradient(135deg, #2f7a4a, var(--theme-accent)); }
+.plat-btn.site  { background: rgba(15,20,25,0.55); border-color: var(--theme-border-hover); }
+.plat-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 15px var(--theme-btn-hover-glow); }
+.plat-btn:disabled { cursor: progress; opacity: .8; }
+.plat-btn.is-empty { opacity: .4; cursor: default; transform: none; box-shadow: none; }
+.plat-btn .soon { font-weight: 400; font-size: .68rem; opacity: .85; }
+
+.video-wrap {
+  max-width: 860px; margin: 0 auto; aspect-ratio: 16/9;
+  border: 1px solid var(--theme-border); border-radius: 12px; overflow: hidden;
+  background: rgba(15,20,25,0.7);
+}
+.video-wrap video { width: 100%; height: 100%; display: block; background: #000; }
+.video-empty {
+  height: 100%; display: flex; align-items: center; justify-content: center;
+  color: var(--theme-text-main); font-size: .85rem; letter-spacing: .12em; text-transform: uppercase;
+}
+
+.media-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+.media-grid > * { flex: 0 0 calc((100% - 2rem) / 3); min-width: 0; }
+.media-grid.cols-2 > * { flex-basis: calc((100% - 1rem) / 2); }
+.media-grid.cols-4 > * { flex-basis: calc((100% - 3rem) / 4); }
+.media-tile {
+  background: var(--theme-card-bg);
+  border: 1px solid var(--theme-border);
+  border-radius: 10px; overflow: hidden;
+  transition: transform .2s, border-color .2s, box-shadow .2s;
+}
+.media-tile:hover { transform: translateY(-3px); border-color: var(--theme-border-hover); box-shadow: 0 6px 18px rgba(100,181,246,0.15); }
+.media-tile img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; background: rgba(100,181,246,0.08); }
+.media-tile.asset img { aspect-ratio: 1/1; object-fit: contain; padding: 1rem; background: rgba(15,20,25,0.55); }
+.media-tile.light img { background: #f2efe9; }
+.tile-label { padding: .5rem .7rem .55rem; }
+.tile-title { font-size: .78rem; font-weight: 600; color: var(--theme-accent); line-height: 1.3; }
+.tile-hint { font-size: .65rem; color: var(--theme-text-main); margin-top: .1rem; }
+
+.links-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
+.press-list { list-style: none; display: flex; flex-direction: column; gap: .55rem; margin-bottom: 1rem; }
+.press-list li { display: flex; gap: .8rem; font-size: .88rem; line-height: 1.45; }
+.press-date { color: var(--theme-accent-pale); flex-shrink: 0; font-variant-numeric: tabular-nums; }
+.press-list a:hover { color: var(--theme-accent-light); text-decoration: underline; }
+
+.contact { padding: 2.5rem; text-align: center; }
+.contact p { font-size: .9rem; color: var(--theme-text-main); }
+.contact a { color: var(--theme-accent-light); }
+.contact a:hover { text-decoration: underline; }
+.contact-copy { font-size: .75rem; color: var(--theme-text-dim); margin-top: .35rem; }
+
+@media (max-width: 800px) {
+  nav { padding: .7rem 1rem; }
+  .nav-links { gap: 1rem; flex-wrap: wrap; justify-content: center; }
+  .nav-links a { font-size: .85rem; }
+  .hero { padding: 6rem 1rem 2rem; }
+  .hero-tagline { font-size: 1.05rem; }
+  .section { padding: 2.5rem 1rem; }
+  .section-title { font-size: 1.6rem; }
+  .contact { padding: 2rem 1rem; }
+  .info-grid, .links-grid { grid-template-columns: 1fr; }
+  .media-grid > *, .media-grid.cols-4 > * { flex-basis: calc((100% - 1rem) / 2); }
+  .media-grid.cols-2 > * { flex-basis: 100%; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="#info">Info</a></li>
+    <li><a href="#trailer">Media</a></li>
+    <li><a href="#links">Links</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <h1 class="game-title visually-hidden" id="game-title">Silk &amp; Sorrow</h1>
+    <img class="game-logo" src="assets/silkandsorrow/silk&amp;sorrow_logo.png" alt="Silk &amp; Sorrow"
+         onerror="this.remove(); document.getElementById('game-title').classList.remove('visually-hidden')">
+    <p class="hero-studio">Press Kit</p>
+    <div class="badge-row">
+      <span class="badge-tba">Coming 2027</span>
+      <span class="badge-tba">PC · Steam</span>
+      <span class="badge-tba">2-player co-op</span>
+    </div>
+    <p class="hero-tagline">A hand-drawn, dark fantasy co-op adventure. Two orphans stumble into a hidden world where all the unwanted from humanity ends up. Together, they must explore a haunting landscape, survive its twisted horrors, and bring back light to the Chrysalis.</p>
+    <div class="btn-row" id="hero-actions"></div>
+  </div>
+</section>
+
+<section class="section" id="info">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Factsheet</h2>
+    </div>
+    <div class="info-grid">
+      <aside class="card facts">
+        <dl>
+          <div><dt>Developer</dt><dd>Snowberry Games</dd></div>
+          <div><dt>Publisher</dt><dd>Snowberry Games (self-published)</dd></div>
+          <div><dt>Release date</dt><dd>2027</dd></div>
+          <div><dt>Platforms</dt><dd>PC (Windows) — Steam</dd></div>
+          <div><dt>Price</dt><dd>TBA</dd></div>
+          <div><dt>Players</dt><dd>2 players — online co-op &amp; couch co-op<br></dd></div>
+          <div>
+            <dt>Genres</dt>
+            <dd><div class="badge-row">
+              <span class="badge-tba">Adventure</span>
+              <span class="badge-tba">Co-op</span>
+              <span class="badge-tba">Dark Fantasy</span>
+              <span class="badge-tba">Horror</span>
+              <span class="badge-tba">Action</span>
+              <span class="badge-tba">Hand-drawn</span>
+            </div></dd>
+          </div>
+          <div><dt>Languages</dt><dd>English, Dutch, French, German, Spanish (Spain), Portuguese (Brazil), Polish, Russian, Japanese, Simplified Chinese, Korean<br></dd></div>
+          <div><dt>Team</dt><dd>shano19 — Game Design &amp; Programming<br>nairolf — Art &amp; Sound</dd></div>
+          <div><dt>Press contact</dt><dd><a class="card-link" href="mailto:contact@snowberrygames.be">contact@snowberrygames.be</a></dd></div>
+        </dl>
+      </aside>
+
+      <div class="card">
+        <h3>Short Description</h3>
+        <p>A hand-drawn, dark fantasy co-op adventure. Two orphans stumble into a hidden world where all the unwanted from humanity ends up. Together, they must explore a haunting landscape, survive its twisted horrors, and bring back light to the Chrysalis.</p>
+
+        <h3>About the Game</h3>
+        <p>Hidden below lies the Chrysalis, a forgotten landscape made from what others discarded: trash, ignored memories, emotions, and even people. Its glow once gave them new life, but now the Chrysalis is shrouded in darkness.</p>
+        <p>Silk &amp; Sorrow is a tense test of teamwork designed exclusively for two players combining their wits to survive, playable in couch co-op and online co-op.</p>
+
+        <h3>Key Features</h3>
+        <ul class="features">
+          <li><strong>Made for two:</strong> designed exclusively for two players, with couch co-op and online co-op.</li>
+          <li><strong>Watch each other's back:</strong> communicate, solve problems and trust one another to survive the strange creatures of the Chrysalis.</li>
+          <li><strong>Bring back light to the Chrysalis:</strong> explore strange ecosystems and uncover the source of the spreading corruption before everything is lost.</li>
+          <li><strong>Adopt Glint the Glowgrub:</strong> a small companion whose glow lights the way. Feed it fireflies to make it stronger and unlock powerful abilities.</li>
+          <li><strong>Hand-drawn dark fantasy:</strong>     a haunting world built from everything humanity left behind.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="trailer">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Trailer</h2>
+    </div>
+    <div class="video-wrap" id="trailer-player"></div>
+    <div class="btn-row section-actions" id="trailer-actions"></div>
+  </div>
+</section>
+
+<section class="section" id="screenshots">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Screenshots</h2>
+      <p class="section-sub">Full HD · 1920 × 1080 · click to open full size</p>
+    </div>
+    <div class="media-grid" id="screenshots-grid"></div>
+    <div class="btn-row section-actions" id="screenshots-actions"></div>
+  </div>
+</section>
+
+<section class="section" id="gifs">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">GIFs</h2>
+    </div>
+    <div class="media-grid cols-2" id="gifs-grid"></div>
+    <div class="btn-row section-actions" id="gifs-actions"></div>
+  </div>
+</section>
+
+<section class="section" id="logos">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Logos</h2>
+      <p class="section-sub">Transparent PNG · click to open full size</p>
+    </div>
+    <div class="media-grid cols-4" id="logos-grid"></div>
+    <div class="btn-row section-actions" id="logos-actions"></div>
+  </div>
+</section>
+
+<section class="section" id="extras">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Extra Assets</h2>
+    </div>
+    <div class="card extras-card">
+      <p>Need more than what's on this page? Our Google Drive folder has extra material ready to use:</p>
+      <ul class="features">
+        <li>Key art in different sizes and formats</li>
+        <li>Character art of Silk, Sorrow and Glint the Glowgrub</li>
+        <li>Backgrounds and other visual elements</li>
+      </ul>
+      <div class="btn-row left" id="extras-actions"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="links">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Links</h2>
+    </div>
+    <div class="links-grid">
+      <div class="card">
+        <h3>Website &amp; Stores</h3>
+        <div class="btn-row left" id="store-links"></div>
+      </div>
+      <div class="card">
+        <h3>Social Media</h3>
+        <div class="btn-row left" id="social-links"></div>
+      </div>
+      <div class="card">
+        <h3>Latest Press Releases</h3>
+        <ul class="press-list" id="press-list"></ul>
+        <div class="btn-row left" id="press-actions"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="container">
+    <p>For press, interviews or anything else: <a href="mailto:contact@snowberrygames.be">contact@snowberrygames.be</a></p>
+    <p class="contact-copy">&copy; 2026 Snowberry Games.</p>
+  </div>
+</section>
+
+<script>
+const ASSETS = 'assets/silkandsorrow/';
+const STEAM_URL = 'https://store.steampowered.com/app/4668880/Silk__Sorrow/';
+const STEAM_NEWS_URL = 'https://store.steampowered.com/news/app/4668880';
+const STEAM_KEY_FORM = '';
+
+const DRIVE = {
+  trailer:     '',
+  screenshots: '',
+  gifs:        '',
+  logos:       '',
+  extras:      '',
+};
+
+const TRAILER_FILE = ASSETS + 'silk&sorrow_trailer.mp4';
+const SCREENSHOTS  = { name: ASSETS + 'silk&sorrow_ss',  ext: ['png', 'jpg'], max: 20 };
+const GIFS         = { name: ASSETS + 'silk&sorrow_gif', ext: ['gif'],        max: 20 };
+
+const LOGOS = [
+  { title: 'Silk & Sorrow logo',   src: ASSETS + 'silk&sorrow_logo.png' },
+  { title: 'Silk & Sorrow logo',   src: ASSETS + 'silk&sorrow_logo.png', light: true },
+  { title: 'Snowberry Games logo', src: 'assets/studio/logo_transparent.png' },
+  { title: 'Snowberry Games logo', src: 'assets/studio/logo_transparent.png', light: true },
+];
+
+const STORES = [
+  { label: 'snowberrygames.be', href: 'index.html', icon: 'fa-solid fa-globe' },
+  { label: 'Steam', href: STEAM_URL, icon: 'fa-brands fa-steam', type: 'steam' },
+];
+
+const SOCIALS = [
+  { label: 'Instagram', href: 'https://www.instagram.com/snowberry.games/', icon: 'fa-brands fa-instagram' },
+];
+
+const PRESS_RELEASES = [];
+
+const JSZIP_URL = 'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js';
+
+const $ = id => document.getElementById(id);
+const attr = s => String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;');
+const icon = cls => cls ? `<i class="${cls}"></i>` : '';
+
+function fill(id, html) {
+  const el = $(id);
+  if (el) el.innerHTML = html;
+  return el;
+}
+
+function button({ href, label, type = 'site', icon: ico }) {
+  if (!href) return `<span class="plat-btn ${type} is-empty">${icon(ico)}${label} <span class="soon">(soon)</span></span>`;
+  const external = /^https?:\/\//.test(href) ? ' target="_blank" rel="noopener"' : '';
+  return `<a href="${attr(href)}"${external} class="plat-btn ${type}">${icon(ico)}${label}</a>`;
+}
+
+const driveButton = (href, label) => button({ href, label, type: 'drive', icon: 'fa-brands fa-google-drive' });
+
+function tile({ src, alt, title, hint, cls = '' }) {
+  const label = title ? `<div class="tile-label"><div class="tile-title">${title}</div><div class="tile-hint">${hint}</div></div>` : '';
+  return `<a class="media-tile ${cls}" href="${attr(src)}" target="_blank" rel="noopener">`
+       + `<img src="${attr(src)}" alt="${attr(alt || title)}" loading="lazy" onerror="this.closest('.media-tile').remove()">${label}</a>`;
+}
+
+async function exists(src) {
+  if (location.protocol.startsWith('http')) {
+    try {
+      const res = await fetch(src, { method: 'HEAD' });
+      return res.ok && !(res.headers.get('content-type') || '').includes('text/html');
+    } catch {}
+  }
+  return new Promise(resolve => {
+    const img = new Image();
+    img.onload = () => resolve(true);
+    img.onerror = () => resolve(false);
+    img.src = src;
+  });
+}
+
+async function findNumbered({ name, ext, max }) {
+  const found = await Promise.all(Array.from({ length: max }, async (_, i) => {
+    for (const e of ext) {
+      const src = `${name}${i + 1}.${e}`;
+      if (await exists(src)) return src;
+    }
+  }));
+  return found.filter(Boolean);
+}
+
+async function findExisting(items) {
+  const found = await Promise.all(items.map(item => exists(item.src)));
+  return items.filter((_, i) => found[i]);
+}
+
+async function gallery({ id, items, toTile, drive, label }) {
+  fill(`${id}-actions`, driveButton(drive, label));
+  items = await items;
+  const grid = fill(`${id}-grid`, items.map(toTile).join(''));
+  if (grid) grid.hidden = !items.length;
+  if ($(id)) $(id).hidden = !items.length && !drive;
+  return items;
+}
+
+function loadScript(src) {
+  return new Promise((resolve, reject) => {
+    const s = document.createElement('script');
+    s.src = src;
+    s.onload = resolve;
+    s.onerror = reject;
+    document.head.append(s);
+  });
+}
+
+function saveBlob(blob, name) {
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = name;
+  document.body.append(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 30000);
+}
+
+let media = Promise.resolve([]);
+
+async function downloadAllMedia(btn) {
+  if (btn.disabled) return;
+  const original = btn.innerHTML;
+  const say = (text, ico = 'fa-solid fa-spinner fa-spin') => { btn.innerHTML = icon(ico) + text; };
+  btn.disabled = true;
+  try {
+    say('Preparing…');
+    const files = [...await media];
+    if (await exists(TRAILER_FILE)) files.push(['trailer', TRAILER_FILE]);
+    if (!files.length) throw new Error('No media found');
+    if (!window.JSZip) await loadScript(JSZIP_URL);
+
+    const zip = new JSZip();
+    for (const [i, [folder, src]] of files.entries()) {
+      say(`Collecting ${i + 1} / ${files.length}`);
+      const res = await fetch(src);
+      if (res.ok) zip.file(`${folder}/${src.split('/').pop()}`, await res.blob());
+    }
+    say('Zipping…');
+    saveBlob(await zip.generateAsync({ type: 'blob', compression: 'STORE' }), 'silk-and-sorrow-media.zip');
+    btn.innerHTML = original;
+  } catch (err) {
+    console.error(err);
+    say(location.protocol === 'file:' ? 'Works once the site is online' : 'Download failed, try again', 'fa-solid fa-triangle-exclamation');
+    setTimeout(() => { btn.innerHTML = original; }, 3000);
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+function render() {
+  fill('hero-actions', [
+    button({ label: 'Wishlist on Steam', href: STEAM_URL, type: 'steam', icon: 'fa-brands fa-steam' }),
+    `<button type="button" class="plat-btn drive" id="download-all">${icon('fa-solid fa-download')}Download all media</button>`,
+    button({ label: 'Request a Steam key', href: STEAM_KEY_FORM, icon: 'fa-solid fa-key' }),
+  ].join(''));
+  $('download-all')?.addEventListener('click', e => downloadAllMedia(e.currentTarget));
+
+  const screenshots = gallery({
+    id: 'screenshots', items: findNumbered(SCREENSHOTS), drive: DRIVE.screenshots, label: 'Download all screenshots',
+    toTile: (src, i) => tile({ src, alt: `Silk & Sorrow screenshot ${i + 1}` }),
+  });
+
+  const gifs = gallery({
+    id: 'gifs', items: findNumbered(GIFS), drive: DRIVE.gifs, label: 'Download all GIFs',
+    toTile: (src, i) => tile({ src, alt: `Silk & Sorrow gameplay GIF ${i + 1}` }),
+  });
+
+  const logos = gallery({
+    id: 'logos', items: findExisting(LOGOS), drive: DRIVE.logos, label: 'Download all logos',
+    toTile: l => tile({ ...l, hint: `${l.light ? 'On light' : 'On dark'} · open full size ↗`, cls: l.light ? 'asset light' : 'asset' }),
+  });
+
+  media = Promise.all([screenshots, gifs, logos]).then(([s, g, l]) => [
+    ...s.map(src => ['screenshots', src]),
+    ...g.map(src => ['gifs', src]),
+    ...[...new Set(l.map(logo => logo.src))].map(src => ['logos', src]),
+  ]);
+
+  const comingSoon = '<div class="video-empty">Trailer coming soon</div>';
+  const player = fill('trailer-player', TRAILER_FILE ? `<video controls playsinline preload="metadata" src="${attr(TRAILER_FILE)}"></video>` : comingSoon);
+  const video = player?.querySelector('video');
+  video?.addEventListener('error', () => { player.innerHTML = comingSoon; });
+  screenshots.then(list => { if (video && list[0]) video.poster = list[0]; });
+  fill('trailer-actions', driveButton(DRIVE.trailer, 'Download trailer'));
+
+  fill('extras-actions', driveButton(DRIVE.extras, 'Open extra assets on Google Drive'));
+  fill('store-links', STORES.map(button).join(''));
+  fill('social-links', SOCIALS.map(button).join(''));
+  fill('press-list', PRESS_RELEASES.length
+    ? PRESS_RELEASES.map(p => `<li><span class="press-date">${p.date}</span><a href="${attr(p.href)}" target="_blank" rel="noopener">${p.title}</a></li>`).join('')
+    : '<li>No press releases yet. Check back soon.</li>');
+  fill('press-actions', button({ label: 'All news on Steam', href: STEAM_NEWS_URL, icon: 'fa-solid fa-newspaper' }));
+}
+
+render();
+</script>
+</body>
+</html>
