@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Silk &amp; Sorrow — Press Kit | Snowberry Games</title>
+<title>Silk &amp; Sorrow Press Kit | Snowberry Games</title>
 <meta name="description" content="Press kit for Silk & Sorrow, a hand-drawn dark fantasy co-op adventure for two players by Snowberry Games.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -110,12 +110,12 @@ nav {
 .features li { font-size: .9rem; color: var(--theme-text-main); padding-left: .95rem; position: relative; line-height: 1.55; }
 .features li::before { content: '–'; position: absolute; left: 0; color: var(--theme-accent); opacity: .7; }
 .features strong { color: var(--theme-accent-pale); font-weight: 500; }
-.extras-card { max-width: 680px; margin: 0 auto; }
-.extras-card .features { margin: .8rem 0 1.2rem; }
 
 .btn-row { display: flex; gap: .5rem; flex-wrap: wrap; justify-content: center; }
 .btn-row.left { justify-content: flex-start; }
 .section-actions { margin-top: 1.5rem; }
+.extras-card { max-width: 680px; margin: 0 auto; text-align: center; }
+.extras-card .btn-row { justify-content: center; margin-top: 1.1rem; }
 .plat-btn {
   display: inline-flex; align-items: center; gap: .4rem;
   font: bold .78rem/1.6 'Inter', sans-serif; padding: .5rem 1rem;
@@ -154,7 +154,6 @@ nav {
 .media-tile:hover { transform: translateY(-3px); border-color: var(--theme-border-hover); box-shadow: 0 6px 18px rgba(100,181,246,0.15); }
 .media-tile img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; background: rgba(100,181,246,0.08); }
 .media-tile.asset img { aspect-ratio: 1/1; object-fit: contain; padding: 1rem; background: rgba(15,20,25,0.55); }
-.media-tile.light img { background: #f2efe9; }
 .tile-label { padding: .5rem .7rem .55rem; }
 .tile-title { font-size: .78rem; font-weight: 600; color: var(--theme-accent); line-height: 1.3; }
 .tile-hint { font-size: .65rem; color: var(--theme-text-main); margin-top: .1rem; }
@@ -201,15 +200,9 @@ nav {
 <section class="hero" id="top">
   <div class="hero-inner">
     <h1 class="game-title visually-hidden" id="game-title">Silk &amp; Sorrow</h1>
-    <img class="game-logo" src="assets/silkandsorrow/silk&amp;sorrow_logo.png" alt="Silk &amp; Sorrow"
+    <img class="game-logo" src="assets/silkandsorrow/silk&amp;sorrow_capsule.png" alt="Silk &amp; Sorrow"
          onerror="this.remove(); document.getElementById('game-title').classList.remove('visually-hidden')">
     <p class="hero-studio">Press Kit</p>
-    <div class="badge-row">
-      <span class="badge-tba">Coming 2027</span>
-      <span class="badge-tba">PC · Steam</span>
-      <span class="badge-tba">2-player co-op</span>
-    </div>
-    <p class="hero-tagline">A hand-drawn, dark fantasy co-op adventure. Two orphans stumble into a hidden world where all the unwanted from humanity ends up. Together, they must explore a haunting landscape, survive its twisted horrors, and bring back light to the Chrysalis.</p>
     <div class="btn-row" id="hero-actions"></div>
   </div>
 </section>
@@ -225,18 +218,17 @@ nav {
           <div><dt>Developer</dt><dd>Snowberry Games</dd></div>
           <div><dt>Publisher</dt><dd>Snowberry Games (self-published)</dd></div>
           <div><dt>Release date</dt><dd>2027</dd></div>
-          <div><dt>Platforms</dt><dd>PC (Windows) — Steam</dd></div>
+          <div><dt>Platforms</dt><dd>PC (Windows, Steam)</dd></div>
           <div><dt>Price</dt><dd>TBA</dd></div>
-          <div><dt>Players</dt><dd>2 players — online co-op &amp; couch co-op<br></dd></div>
           <div>
             <dt>Genres</dt>
             <dd><div class="badge-row">
-              <span class="badge-tba">Adventure</span>
-              <span class="badge-tba">Co-op</span>
               <span class="badge-tba">Dark Fantasy</span>
               <span class="badge-tba">Horror</span>
-              <span class="badge-tba">Action</span>
+              <span class="badge-tba">Co-op</span>
               <span class="badge-tba">Hand-drawn</span>
+              <span class="badge-tba">Action</span>
+              <span class="badge-tba">Adventure</span>
             </div></dd>
           </div>
           <div><dt>Languages</dt><dd>English, Dutch, French, German, Spanish (Spain), Portuguese (Brazil), Polish, Russian, Japanese, Simplified Chinese, Korean<br></dd></div>
@@ -314,13 +306,8 @@ nav {
       <h2 class="section-title">Extra Assets</h2>
     </div>
     <div class="card extras-card">
-      <p>Need more than what's on this page? Our Google Drive folder has extra material ready to use:</p>
-      <ul class="features">
-        <li>Key art in different sizes and formats</li>
-        <li>Character art of Silk, Sorrow and Glint the Glowgrub</li>
-        <li>Backgrounds and other visual elements</li>
-      </ul>
-      <div class="btn-row left" id="extras-actions"></div>
+      <p>Need more than what's on this page? Our Google Drive folder has extra materials</p>
+      <div class="btn-row" id="extras-actions"></div>
     </div>
   </div>
 </section>
@@ -362,11 +349,8 @@ const STEAM_NEWS_URL = 'https://store.steampowered.com/news/app/4668880';
 const STEAM_KEY_FORM = '';
 
 const DRIVE = {
-  trailer:     '',
-  screenshots: '',
-  gifs:        '',
-  logos:       '',
-  extras:      '',
+  trailer: '',
+  extras:  'https://drive.google.com/drive/folders/1yEepDIi5l4GvpcgRlmNKgdpaltR_Cv0s?usp=drive_link',
 };
 
 const TRAILER_FILE = ASSETS + 'silk&sorrow_trailer.mp4';
@@ -375,9 +359,7 @@ const GIFS         = { name: ASSETS + 'silk&sorrow_gif', ext: ['gif'],        ma
 
 const LOGOS = [
   { title: 'Silk & Sorrow logo',   src: ASSETS + 'silk&sorrow_logo.png' },
-  { title: 'Silk & Sorrow logo',   src: ASSETS + 'silk&sorrow_logo.png', light: true },
   { title: 'Snowberry Games logo', src: 'assets/studio/logo_transparent.png' },
-  { title: 'Snowberry Games logo', src: 'assets/studio/logo_transparent.png', light: true },
 ];
 
 const STORES = [
@@ -447,13 +429,18 @@ async function findExisting(items) {
   return items.filter((_, i) => found[i]);
 }
 
-async function gallery({ id, items, toTile, drive, label }) {
-  fill(`${id}-actions`, driveButton(drive, label));
+function downloadButton(id, label, getFiles, zipName) {
+  const btn = fill(id, `<button type="button" class="plat-btn drive">${icon('fa-solid fa-download')}${label}</button>`)?.querySelector('button');
+  btn?.addEventListener('click', () => downloadZip(btn, getFiles, zipName));
+}
+
+async function gallery({ id, items, toTile, label }) {
   items = await items;
-  const grid = fill(`${id}-grid`, items.map(toTile).join(''));
-  if (grid) grid.hidden = !items.length;
-  if ($(id)) $(id).hidden = !items.length && !drive;
-  return items;
+  const files = items.map(item => item.src || item);
+  fill(`${id}-grid`, items.map(toTile).join(''));
+  if ($(id)) $(id).hidden = !items.length;
+  downloadButton(`${id}-actions`, label, () => files.map(src => ['', src]), `silk-and-sorrow-${id}.zip`);
+  return files;
 }
 
 function loadScript(src) {
@@ -476,28 +463,25 @@ function saveBlob(blob, name) {
   setTimeout(() => URL.revokeObjectURL(a.href), 30000);
 }
 
-let media = Promise.resolve([]);
-
-async function downloadAllMedia(btn) {
+async function downloadZip(btn, getFiles, zipName) {
   if (btn.disabled) return;
   const original = btn.innerHTML;
   const say = (text, ico = 'fa-solid fa-spinner fa-spin') => { btn.innerHTML = icon(ico) + text; };
   btn.disabled = true;
   try {
     say('Preparing…');
-    const files = [...await media];
-    if (await exists(TRAILER_FILE)) files.push(['trailer', TRAILER_FILE]);
-    if (!files.length) throw new Error('No media found');
+    const files = await getFiles();
+    if (!files.length) throw new Error('Nothing to download');
     if (!window.JSZip) await loadScript(JSZIP_URL);
 
     const zip = new JSZip();
     for (const [i, [folder, src]] of files.entries()) {
       say(`Collecting ${i + 1} / ${files.length}`);
       const res = await fetch(src);
-      if (res.ok) zip.file(`${folder}/${src.split('/').pop()}`, await res.blob());
+      if (res.ok) zip.file(folder + src.split('/').pop(), await res.blob());
     }
     say('Zipping…');
-    saveBlob(await zip.generateAsync({ type: 'blob', compression: 'STORE' }), 'silk-and-sorrow-media.zip');
+    saveBlob(await zip.generateAsync({ type: 'blob', compression: 'STORE' }), zipName);
     btn.innerHTML = original;
   } catch (err) {
     console.error(err);
@@ -509,33 +493,36 @@ async function downloadAllMedia(btn) {
 }
 
 function render() {
-  fill('hero-actions', [
-    button({ label: 'Wishlist on Steam', href: STEAM_URL, type: 'steam', icon: 'fa-brands fa-steam' }),
-    `<button type="button" class="plat-btn drive" id="download-all">${icon('fa-solid fa-download')}Download all media</button>`,
-    button({ label: 'Request a Steam key', href: STEAM_KEY_FORM, icon: 'fa-solid fa-key' }),
-  ].join(''));
-  $('download-all')?.addEventListener('click', e => downloadAllMedia(e.currentTarget));
-
   const screenshots = gallery({
-    id: 'screenshots', items: findNumbered(SCREENSHOTS), drive: DRIVE.screenshots, label: 'Download all screenshots',
+    id: 'screenshots', items: findNumbered(SCREENSHOTS), label: 'Download all screenshots',
     toTile: (src, i) => tile({ src, alt: `Silk & Sorrow screenshot ${i + 1}` }),
   });
 
   const gifs = gallery({
-    id: 'gifs', items: findNumbered(GIFS), drive: DRIVE.gifs, label: 'Download all GIFs',
+    id: 'gifs', items: findNumbered(GIFS), label: 'Download all GIFs',
     toTile: (src, i) => tile({ src, alt: `Silk & Sorrow gameplay GIF ${i + 1}` }),
   });
 
   const logos = gallery({
-    id: 'logos', items: findExisting(LOGOS), drive: DRIVE.logos, label: 'Download all logos',
-    toTile: l => tile({ ...l, hint: `${l.light ? 'On light' : 'On dark'} · open full size ↗`, cls: l.light ? 'asset light' : 'asset' }),
+    id: 'logos', items: findExisting(LOGOS), label: 'Download all logos',
+    toTile: l => tile({ ...l, hint: 'Open full size ↗', cls: 'asset' }),
   });
 
-  media = Promise.all([screenshots, gifs, logos]).then(([s, g, l]) => [
-    ...s.map(src => ['screenshots', src]),
-    ...g.map(src => ['gifs', src]),
-    ...[...new Set(l.map(logo => logo.src))].map(src => ['logos', src]),
-  ]);
+  fill('hero-actions', [
+    button({ label: 'Wishlist on Steam', href: STEAM_URL, type: 'steam', icon: 'fa-brands fa-steam' }),
+    '<span id="download-all"></span>',
+    button({ label: 'Request a Steam key', href: STEAM_KEY_FORM, icon: 'fa-solid fa-key' }),
+  ].join(''));
+  downloadButton('download-all', 'Download all media', async () => {
+    const [s, g, l] = await Promise.all([screenshots, gifs, logos]);
+    const files = [
+      ...s.map(src => ['screenshots/', src]),
+      ...g.map(src => ['gifs/', src]),
+      ...l.map(src => ['logos/', src]),
+    ];
+    if (await exists(TRAILER_FILE)) files.push(['trailer/', TRAILER_FILE]);
+    return files;
+  }, 'silk-and-sorrow-media.zip');
 
   const comingSoon = '<div class="video-empty">Trailer coming soon</div>';
   const player = fill('trailer-player', TRAILER_FILE ? `<video controls playsinline preload="metadata" src="${attr(TRAILER_FILE)}"></video>` : comingSoon);
