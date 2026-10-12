@@ -50,6 +50,9 @@ body {
 
 a { color: inherit; text-decoration: none; }
 
+/* Keep section titles clear of the fixed nav when jumping to them */
+section[id] { scroll-margin-top: 80px; }
+
 /* ── NAV ── */
 nav {
   position: fixed; top: 0; width: 100%; z-index: 1000;
@@ -227,7 +230,7 @@ nav {
 .plat-btn.itch {
   background: linear-gradient(135deg, var(--theme-btn-itch-from), var(--theme-btn-itch-to));
 }
-.plat-btn.apply {
+.plat-btn.apply, .plat-btn.mail {
   background: linear-gradient(135deg, var(--theme-btn-apply-from), var(--theme-btn-apply-to));
 }
 .plat-btn:hover {
@@ -291,11 +294,19 @@ nav {
 .job-empty { text-align: center; font-size: .9rem; color: var(--theme-text-muted); }
 
 /* ── CONTACT ── */
-.contact { padding: 2.5rem 2.5rem; text-align: center; }
-.contact p { font-size: .9rem; color: var(--theme-text-muted); }
-.contact a { color: var(--theme-accent-light); }
-.contact a:hover { text-decoration: underline; }
-.contact-copy { font-size: .75rem; color: var(--theme-text-dim); margin-top: .35rem; }
+.contact-card {
+  max-width: 680px; margin: 0 auto; text-align: center;
+  background: var(--theme-card-bg);
+  border: 1px solid var(--theme-border);
+  border-radius: 12px;
+  padding: 1.6rem 1.4rem;
+}
+.contact-card p { font-size: .95rem; color: var(--theme-text-muted); }
+.contact-card .plat-btn { margin-top: 1rem; }
+
+/* ── FOOTER ── */
+footer { padding: 1rem 2.5rem 2rem; text-align: center; }
+.footer-copy { font-size: .75rem; color: var(--theme-text-dim); }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 800px) {
@@ -386,12 +397,23 @@ nav {
 </section>
 
 <!-- CONTACT -->
-<section class="contact" id="contact">
+<section class="section" id="contact">
   <div class="container">
-    <p>Feel free to reach out for anything really! <a href="mailto:contact@snowberrygames.be">contact@snowberrygames.be</a></p>
-    <p class="contact-copy">&copy; 2025 Snowberry Games.</p>
+    <div class="section-header">
+      <h2 class="section-title">Contact</h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="contact-card">
+      <p>Feel free to reach out for anything really!</p>
+      <a class="plat-btn mail" href="mailto:contact@snowberrygames.be"><i class="fa-solid fa-envelope"></i>contact@snowberrygames.be</a>
+    </div>
   </div>
 </section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="footer-copy">&copy; 2025 Snowberry Games.</p>
+</footer>
 
 <script>
 const PROJECTS = [
