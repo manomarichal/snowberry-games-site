@@ -31,6 +31,8 @@
   --theme-btn-steam-to:   #2a475e;
   --theme-btn-itch-from:  #fa5c5c;
   --theme-btn-itch-to:    #ff7979;
+  --theme-btn-apply-from: #2f7a4a;
+  --theme-btn-apply-to:   #4BA66A;
   --theme-btn-hover-glow: rgba(100,181,246,0.30);
 }
 
@@ -225,6 +227,9 @@ nav {
 .plat-btn.itch {
   background: linear-gradient(135deg, var(--theme-btn-itch-from), var(--theme-btn-itch-to));
 }
+.plat-btn.apply {
+  background: linear-gradient(135deg, var(--theme-btn-apply-from), var(--theme-btn-apply-to));
+}
 .plat-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 15px var(--theme-btn-hover-glow);
@@ -260,6 +265,31 @@ nav {
 .jam-card-title { font-size: .7rem; font-weight: 600; color: var(--theme-accent); line-height: 1.3; }
 .jam-card-play  { font-size: .6rem; color:var(--theme-text-main);margin-top: .1rem; }
 
+/* ── CAREERS ── */
+.careers-card {
+  max-width: 960px; margin: 0 auto;
+  background: var(--theme-card-bg);
+  border: 1px solid var(--theme-border);
+  border-radius: 12px;
+  padding: 1.4rem;
+}
+.job-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+.job {
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 1rem; flex-wrap: wrap;
+  padding-bottom: 1rem; border-bottom: 1px solid var(--theme-border);
+}
+.job:last-child { padding-bottom: 0; border-bottom: 0; }
+.job-info { flex: 1; min-width: 220px; }
+.job-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem; font-weight: 600;
+  color: var(--theme-accent); line-height: 1.2;
+}
+.job-meta { display: flex; gap: .4rem; flex-wrap: wrap; margin-top: .45rem; }
+.job-desc { font-size: .86rem; color: var(--theme-text-muted); line-height: 1.6; margin-top: .45rem; }
+.job-empty { text-align: center; font-size: .9rem; color: var(--theme-text-muted); }
+
 /* ── CONTACT ── */
 .contact { padding: 2.5rem 2.5rem; text-align: center; }
 .contact p { font-size: .9rem; color: var(--theme-text-muted); }
@@ -274,6 +304,8 @@ nav {
   .nav-links { display: none; }
   .project-card { grid-template-columns: 1fr; }
   .jam-grid { grid-template-columns: repeat(3, 1fr); }
+  .section { padding: 3rem 1rem; }
+  .careers-card { padding: 1.1rem; }
 }
 
 </style>
@@ -287,6 +319,7 @@ nav {
     <li><a href="#home">Home</a></li>
     <li><a href="#projects">Games</a></li>
     <li><a href="#jams">Jam Games</a></li>
+    <li><a href="#careers">Careers</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -339,6 +372,19 @@ nav {
   </div>
 </section>
 
+<!-- CAREERS -->
+<section class="section" id="careers">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Careers</h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="careers-card">
+      <ul class="job-list" id="job-list"></ul>
+    </div>
+  </div>
+</section>
+
 <!-- CONTACT -->
 <section class="contact" id="contact">
   <div class="container">
@@ -378,9 +424,25 @@ const JAM_GAMES = [
   { title: 'Neon Ascend',        image: 'assets/jams/neonascend.png', href: 'https://shano19.itch.io/neon-ascend' },
 ];
 
+// Job listings. Add an object here and it appears in the Careers section.
+// Leave the list empty to show the "no open positions" message.
+const JOBS = [
+  // {
+  //   title: 'Gameplay Programmer',
+  //   type: 'Internship',              // e.g. Full-time, Part-time, Internship, Freelance
+  //   location: 'Remote / Belgium',
+  //   desc: 'Short description of the role and what you are looking for.',
+  //   href: '',                        // optional link to a full listing; empty = apply by email
+  // },
+];
+
+const CAREERS_EMAIL = 'contact@snowberrygames.be';
+const CAREERS_EMPTY = "We don't have any open positions or internships available at the moment.";
+
 const ICO = {
   steam: `<i class="fa-brands fa-steam"></i>`,
   itch:  `<i class="fa-brands fa-itch-io"></i>`,
+  apply: `<i class="fa-solid fa-paper-plane"></i>`,
 };
 
 function renderProjects() {
@@ -424,8 +486,32 @@ function renderJams() {
   }).join('');
 }
 
+function renderCareers() {
+  const list = document.getElementById('job-list');
+  if (!JOBS.length) {
+    list.innerHTML = `<li class="job-empty">${CAREERS_EMPTY}</li>`;
+    return;
+  }
+  list.innerHTML = JOBS.map(j => {
+    const meta = [j.type, j.location].filter(Boolean)
+      .map(t => `<span class="badge-tba">${t}</span>`).join('');
+    // Without a listing link, "Apply" opens an email with the job title as subject
+    const href = j.href || `mailto:${CAREERS_EMAIL}?subject=${encodeURIComponent('Application: ' + j.title)}`;
+    const ext = /^https?:\/\//.test(href) ? ' target="_blank" rel="noopener"' : '';
+    return `<li class="job">
+      <div class="job-info">
+        <h3 class="job-title">${j.title}</h3>
+        ${meta ? `<div class="job-meta">${meta}</div>` : ''}
+        ${j.desc ? `<p class="job-desc">${j.desc}</p>` : ''}
+      </div>
+      <a href="${href}"${ext} class="plat-btn apply">${ICO.apply}Apply</a>
+    </li>`;
+  }).join('');
+}
+
 renderProjects();
 renderJams();
+renderCareers();
 </script>
 </body>
 </html>
