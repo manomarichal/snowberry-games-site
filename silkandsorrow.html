@@ -25,6 +25,8 @@
   --theme-badge-text:     #D96299;
   --theme-btn-steam-from: #1b2838;
   --theme-btn-steam-to:   #2a475e;
+  --theme-btn-yt-from:    #8e0e0e;
+  --theme-btn-yt-to:      #d42020;
   --theme-btn-hover-glow: rgba(100,181,246,0.30);
 }
 
@@ -123,9 +125,10 @@ nav {
   border-radius: 20px; border: 1px solid transparent;
   color: #fff; cursor: pointer; transition: all .3s;
 }
-.plat-btn.steam { background: linear-gradient(135deg, var(--theme-btn-steam-from), var(--theme-btn-steam-to)); }
-.plat-btn.drive { background: linear-gradient(135deg, #2f7a4a, var(--theme-accent)); }
-.plat-btn.site  { background: rgba(15,20,25,0.55); border-color: var(--theme-border-hover); }
+.plat-btn.steam   { background: linear-gradient(135deg, var(--theme-btn-steam-from), var(--theme-btn-steam-to)); }
+.plat-btn.youtube { background: linear-gradient(135deg, var(--theme-btn-yt-from), var(--theme-btn-yt-to)); }
+.plat-btn.drive   { background: linear-gradient(135deg, #2f7a4a, var(--theme-accent)); }
+.plat-btn.site    { background: rgba(15,20,25,0.55); border-color: var(--theme-border-hover); }
 .plat-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 15px var(--theme-btn-hover-glow); }
 .plat-btn:disabled { cursor: progress; opacity: .8; }
 .plat-btn.is-empty { opacity: .4; cursor: default; transform: none; box-shadow: none; }
@@ -136,7 +139,17 @@ nav {
   border: 1px solid var(--theme-border); border-radius: 12px; overflow: hidden;
   background: rgba(15,20,25,0.7);
 }
-.video-wrap video { width: 100%; height: 100%; display: block; background: #000; }
+.video-link { position: relative; display: block; width: 100%; height: 100%; background: #000; }
+.video-link img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s, opacity .3s; opacity: .85; }
+.video-play {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  display: flex; flex-direction: column; align-items: center; gap: .6rem;
+  color: #fff; font-size: .8rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
+  text-shadow: 0 2px 8px rgba(0,0,0,.7);
+}
+.video-play i { font-size: 4.5rem; color: var(--theme-btn-yt-to); filter: drop-shadow(0 4px 12px rgba(0,0,0,.5)); transition: transform .3s; }
+.video-link:hover img { transform: scale(1.03); opacity: 1; }
+.video-link:hover .video-play i { transform: scale(1.1); }
 .video-empty {
   height: 100%; display: flex; align-items: center; justify-content: center;
   color: var(--theme-text-main); font-size: .85rem; letter-spacing: .12em; text-transform: uppercase;
@@ -347,12 +360,13 @@ const STEAM_URL = 'https://store.steampowered.com/app/4668880/Silk__Sorrow/';
 const STEAM_NEWS_URL = 'https://store.steampowered.com/news/app/4668880';
 const STEAM_KEY_FORM = '';
 
+const TRAILER_YOUTUBE = 'https://www.youtube.com/watch?v=orSw4Fn1sxY';
+
 const DRIVE = {
-  trailer: '',
+  trailer: 'https://drive.google.com/file/d/1kgOJhuUxv91T3tLUNj-QvEZVs5Q_F1eN/view?usp=sharing',
   extras:  'https://drive.google.com/drive/folders/1yEepDIi5l4GvpcgRlmNKgdpaltR_Cv0s?usp=drive_link',
 };
 
-const TRAILER_FILE   = ASSETS + 'silk&sorrow_trailer.mp4';
 const FACTSHEET_PDF  = ASSETS + 'silk&sorrow_factsheet.pdf';
 const SCREENSHOTS  = { name: ASSETS + 'silk&sorrow_ss',  ext: ['png', 'jpg'], max: 20 };
 const GIFS         = { name: ASSETS + 'silk&sorrow_gif', ext: ['gif'],        max: 20 };
@@ -393,6 +407,11 @@ function button({ href, label, type = 'site', icon: ico }) {
 }
 
 const driveButton = (href, label) => button({ href, label, type: 'drive', icon: 'fa-brands fa-google-drive' });
+
+function youtubeId(url) {
+  const m = String(url || '').match(/(?:youtu\.be\/|youtube(?:-nocookie)?\.com\/(?:watch\?(?:.*&)?v=|embed\/|shorts\/|live\/|v\/))([\w-]{11})/);
+  return m ? m[1] : '';
+}
 
 function tile({ src, alt, title, hint, cls = '' }) {
   const label = title ? `<div class="tile-label"><div class="tile-title">${title}</div><div class="tile-hint">${hint}</div></div>` : '';
@@ -521,7 +540,6 @@ function render() {
       ...g.map(src => ['gifs/', src]),
       ...l.map(src => ['logos/', src]),
     ];
-    if (await exists(TRAILER_FILE)) files.push(['trailer/', TRAILER_FILE]);
     if (await exists(FACTSHEET_PDF)) files.push(['', FACTSHEET_PDF]);
     return files;
   }, 'silk-and-sorrow-media.zip');
@@ -531,12 +549,18 @@ function render() {
     fill('info-actions', `<a class="plat-btn drive" href="${attr(FACTSHEET_PDF)}" download>${icon('fa-solid fa-file-pdf')}Download factsheet (PDF)</a>`);
   });
 
-  const comingSoon = '<div class="video-empty">Trailer coming soon</div>';
-  const player = fill('trailer-player', TRAILER_FILE ? `<video controls playsinline preload="metadata" src="${attr(TRAILER_FILE)}"></video>` : comingSoon);
-  const video = player?.querySelector('video');
-  video?.addEventListener('error', () => { player.innerHTML = comingSoon; });
-  screenshots.then(list => { if (video && list[0]) video.poster = list[0]; });
-  fill('trailer-actions', driveButton(DRIVE.trailer, 'Download trailer'));
+  const ytId = youtubeId(TRAILER_YOUTUBE);
+  fill('trailer-player', ytId
+    ? `<a class="video-link" href="https://www.youtube.com/watch?v=${ytId}" target="_blank" rel="noopener" aria-label="Watch the Silk &amp; Sorrow trailer on YouTube">`
+      + `<img src="https://img.youtube.com/vi/${ytId}/maxresdefault.jpg" alt="" loading="lazy"`
+      + ` onload="if (this.naturalWidth < 200) this.src='https://img.youtube.com/vi/${ytId}/hqdefault.jpg'"`
+      + ` onerror="this.onerror=null; this.src='https://img.youtube.com/vi/${ytId}/hqdefault.jpg'">`
+      + `<span class="video-play"><i class="fa-brands fa-youtube"></i>Watch on YouTube</span></a>`
+    : '<div class="video-empty">Trailer coming soon</div>');
+  fill('trailer-actions', [
+    button({ label: 'Watch on YouTube', href: ytId ? `https://www.youtube.com/watch?v=${ytId}` : '', type: 'youtube', icon: 'fa-brands fa-youtube' }),
+    driveButton(DRIVE.trailer, 'Download trailer'),
+  ].join(''));
 
   fill('extras-actions', driveButton(DRIVE.extras, 'Open extra assets on Google Drive'));
   fill('store-links', STORES.map(button).join(''));
