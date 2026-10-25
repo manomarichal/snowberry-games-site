@@ -184,6 +184,19 @@ nav {
 .contact a:hover { text-decoration: underline; }
 .contact-copy { font-size: .75rem; color: var(--theme-text-dim); margin-top: .35rem; }
 
+/* VAF funding credit (required by the VAF/Gamefonds agreement) */
+.funding {
+  margin: 0 auto 1.6rem; padding-bottom: 1.6rem;
+  border-bottom: 1px solid var(--theme-border);
+  display: flex; flex-direction: column; align-items: center; gap: .8rem;
+}
+.funding-logo { display: inline-block; }
+.funding-logo img { display: block; height: 64px; width: auto; max-width: 100%; }
+.contact .funding-text {
+  font-size: .78rem; letter-spacing: .06em; line-height: 1.5;
+  color: var(--theme-text-main); max-width: 560px;
+}
+
 @media (max-width: 800px) {
   nav { padding: .7rem 1rem; }
   .nav-links { gap: 1rem; flex-wrap: wrap; justify-content: center; }
@@ -196,6 +209,7 @@ nav {
   .info-grid, .links-grid { grid-template-columns: 1fr; }
   .media-grid > *, .media-grid.cols-4 > * { flex-basis: calc((100% - 1rem) / 2); }
   .media-grid.cols-2 > * { flex-basis: 100%; }
+  .funding-logo img { height: 56px; }
 }
 </style>
 </head>
@@ -243,6 +257,7 @@ nav {
           </div>
           <div><dt>Languages</dt><dd>English, Dutch, French, German, Spanish (Spain), Portuguese (Brazil), Polish, Russian, Japanese, Simplified Chinese, Korean<br></dd></div>
           <div><dt>Team</dt><dd>shano19, nairolf</dd></div>
+          <div><dt>Funding</dt><dd>Supported by the <a class="card-link" href="https://www.vaf.be" target="_blank" rel="noopener">Flanders Audiovisual Fund (VAF)</a> of the Government of Flanders</dd></div>
           <div><dt>Press contact</dt><dd><a class="card-link" href="mailto:contact@snowberrygames.be">contact@snowberrygames.be</a></dd></div>
         </dl>
       </aside>
@@ -347,12 +362,21 @@ nav {
   </div>
 </section>
 
-<section class="contact" id="contact">
+<footer class="contact" id="contact">
   <div class="container">
+    <!-- VAF credit: combination logo (English version, per the current VAF style guide) linked to vaf.be,
+         plus the mandatory text mention for press kits. Do not alter the wording. -->
+    <div class="funding">
+      <a class="funding-logo" href="https://www.vaf.be" target="_blank" rel="noopener">
+        <img src="assets/studio/vaf_vlaanderen_logo_en.png"
+             alt="Flanders Audiovisual Fund (VAF) and Flanders – State of the Art">
+      </a>
+      <p class="funding-text">SUPPORTED BY THE FLANDERS AUDIOVISUAL FUND (VAF) OF THE GOVERNMENT OF FLANDERS</p>
+    </div>
     <p>For anything: <a href="mailto:contact@snowberrygames.be">contact@snowberrygames.be</a></p>
     <p class="contact-copy">&copy; 2026 Snowberry Games.</p>
   </div>
-</section>
+</footer>
 
 <script>
 const ASSETS = 'assets/silkandsorrow/';
